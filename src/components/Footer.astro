@@ -1,0 +1,61 @@
+---
+import InstagramIcon from "../icons/InstagramIcon.astro";
+import SpotifyIcon from "../icons/SpotifyIcon.astro";
+import TwitchIcon from "../icons/TwitchIcon.astro";
+import TwitterIcon from "../icons/TwitterIcon.astro";
+import YoutubeIcon from "../icons/YoutubeIcon.astro";
+---
+
+<footer>
+  <a href="#" class="blender">
+    <img src="blender.png" alt="">
+  </a>
+  <p>Copyright © 2024 Hay Algo Ahí | Powered by Hay Algo Ahí</p>
+  <div>
+    <a href="#"><YoutubeIcon size={36} color="#fff" /></a>
+    <a href="#"><TwitchIcon size={36} color="#fff" /></a>
+    <a href="#"><InstagramIcon size={36} color="#fff" /></a>
+    <a href="#"><TwitterIcon size={36} color="#fff" /></a>
+    <a href="#"><SpotifyIcon size={36} color="#fff" /></a>
+  </div>
+</footer>
+<style>
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem;
+    width: 85%;
+    margin: 0 auto;
+    color: #ffffff;
+    border-top: 1px solid #ffffff;
+  }
+
+  .blender {
+    flex: 1;
+  }
+
+  img {
+    width: 150px;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  div {
+    display: flex;
+    gap: 1rem;
+    flex: 1;
+    justify-content: flex-end; 
+  }
+
+  div a {
+    transition: all 0.3s ease-in-out;
+  }
+
+  div a:hover {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+</style>

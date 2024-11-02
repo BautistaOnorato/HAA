@@ -4,9 +4,21 @@ dependencies:
   '@astrojs/check':
     specifier: ^0.9.4
     version: 0.9.4(typescript@5.6.3)
+  '@fontsource-variable/roboto-flex':
+    specifier: ^5.1.0
+    version: 5.1.0
+  '@fontsource/bebas-neue':
+    specifier: ^5.1.0
+    version: 5.1.0
   astro:
     specifier: ^4.16.8
     version: 4.16.8(typescript@5.6.3)
+  photoswipe:
+    specifier: ^5.4.4
+    version: 5.4.4
+  swiper:
+    specifier: ^11.1.14
+    version: 11.1.14
   typescript:
     specifier: ^5.6.3
     version: 5.6.3
@@ -567,6 +579,14 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@fontsource-variable/roboto-flex@5.1.0:
+    resolution: {integrity: sha512-TwH8+uOwBqIjxtvTc+kp7ywyH7V7bDLbAXrEQg2SoCTJ6m2pn00x7ULioTTzDEvek+XpbqIf8gbKE1zlcONNGg==}
+    dev: false
+
+  /@fontsource/bebas-neue@5.1.0:
+    resolution: {integrity: sha512-Z/JzzEEun97ZY7zzD5GhjZIE9bemHaLenzo5RlFtPVb8gNB9/DM7S+c7El5OcBcPc0crzeyGTVxkUboQQLM4vQ==}
+    dev: false
 
   /@img/sharp-darwin-arm64@0.33.5:
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -2572,6 +2592,11 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
+  /photoswipe@5.4.4:
+    resolution: {integrity: sha512-WNFHoKrkZNnvFFhbHL93WDkW3ifwVOXSW3w1UuZZelSmgXpIGiZSNlZJq37rR8YejqME2rHs9EhH9ZvlvFH2NA==}
+    engines: {node: '>= 0.12.0'}
+    dev: false
+
   /picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
     dev: false
@@ -2979,6 +3004,11 @@ packages:
   /strip-bom@3.0.0:
     resolution: {integrity: sha512-vavAMRXOgBVNF6nyEEmL3DBK19iRpDcoIwW+swQ+CbGiu7lju6t+JklA1MHweoWtadgt4ISVUsXLyDq34ddcwA==}
     engines: {node: '>=4'}
+    dev: false
+
+  /swiper@11.1.14:
+    resolution: {integrity: sha512-VbQLQXC04io6AoAjIUWuZwW4MSYozkcP9KjLdrsG/00Q/yiwvhz9RQyt0nHXV10hi9NVnDNy1/wv7Dzq1lkOCQ==}
+    engines: {node: '>= 4.7.0'}
     dev: false
 
   /tinyexec@0.3.1:
