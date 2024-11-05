@@ -1,0 +1,29 @@
+---
+import GuestContainer from "./GuestContainer"
+---
+<section>
+  <h2>¿Quienes pasaron por nuestros estudios?</h2>
+  <div class="grid_container">
+    <GuestContainer client:load />
+  </div>
+</section>
+<style>
+  section {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    color: #ffffff;
+  }
+
+  h2 {
+    font-size: 4rem;
+  }
+
+  .grid_container {
+    display: flex;
+    width: 100%;
+    gap: 2rem;
+  }
+</style>
