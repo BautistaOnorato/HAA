@@ -16,6 +16,7 @@
     "astro": "^4.16.8",
     "photoswipe": "^5.4.4",
     "swiper": "^11.1.14",
+    "typed.js": "^2.1.0",
     "typescript": "^5.6.3"
   }
 }

@@ -5,7 +5,12 @@ import TwitchIcon from "../icons/TwitchIcon.astro";
 import TwitterIcon from "../icons/TwitterIcon.astro";
 import YoutubeIcon from "../icons/YoutubeIcon.astro";
 ---
-
+<script>
+  const footer = document.querySelector("footer");
+  if (footer && window.location.pathname === "/secciones") {
+    footer.style.borderTop = "none";
+  }
+</script>
 <footer>
   <a href="#" class="blender">
     <img src="blender.png" alt="">

@@ -19,6 +19,9 @@ dependencies:
   swiper:
     specifier: ^11.1.14
     version: 11.1.14
+  typed.js:
+    specifier: ^2.1.0
+    version: 2.1.0
   typescript:
     specifier: ^5.6.3
     version: 5.6.3
@@ -3052,6 +3055,10 @@ packages:
   /type-fest@4.26.1:
     resolution: {integrity: sha512-yOGpmOAL7CkKe/91I5O3gPICmJNLJ1G4zFYVAsRHg7M64biSnPtRj0WNQt++bRkjYOqjWXrhnUw1utzmVErAdg==}
     engines: {node: '>=16'}
+    dev: false
+
+  /typed.js@2.1.0:
+    resolution: {integrity: sha512-bDuXEf7YcaKN4g08NMTUM6G90XU25CK3bh6U0THC/Mod/QPKlEt9g/EjvbYB8x2Qwr2p6J6I3NrsoYaVnY6wsQ==}
     dev: false
 
   /typesafe-path@0.2.2:
