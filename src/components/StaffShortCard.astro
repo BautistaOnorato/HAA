@@ -1,0 +1,48 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  image: string;
+}
+
+const { name, role, image } = Astro.props;
+---
+<div class="card">
+  <img src={image} alt="">
+  <div class="info">
+    <p>{name}</p>
+    <span>{role}</span>
+  </div>
+</div>
+<style>
+  .card {
+    display: flex;
+    /* gap: 1rem; */
+    border: 1px solid #565656;
+    min-height: 220px;
+    flex-direction: column;
+  }
+
+  img {
+    object-fit: cover;
+    border-bottom: 1px solid #565656;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+
+  span {
+    font-size: 1.2rem;
+    opacity: 0.7;
+  }
+</style>
