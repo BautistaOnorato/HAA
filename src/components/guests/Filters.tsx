@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import CrossIcon from '../../icons/CrossIcon'
 import styles from './guests.module.css'
 import Filter from './Filter'
 import { categoryOptions, roleOptions } from '../../constants/select-options'
@@ -9,14 +7,15 @@ interface FilterProps {
   roles: string[]
   onCategoryChange: (category: string) => void
   onRoleChange: (role: string) => void
+  onReset: () => void
 }
 
-const Filters = ({ categories, roles, onCategoryChange, onRoleChange }: FilterProps) => {
+const Filters = ({ categories, roles, onCategoryChange, onRoleChange, onReset }: FilterProps) => {
   return (
     <div className={styles.filters_container}>
       <div className={styles.filters_title}>
         <p>Filtros</p>
-        <CrossIcon size={32} className={styles.icon} />
+        <p className={styles.filters_reset} onClick={onReset}>Borrar filtros</p>
       </div>
 
       <div className={styles.filters}>

@@ -28,7 +28,7 @@ const Select = ({
     <span className={`${styles.select} ${style}`}>
       <div className={styles.select_title} onClick={() => setOpen(!open)}>
        <span>Ordenar {value}</span>
-      {open ? <ChevronUpIcon size={28} /> : <ChevronDownIcon size={28} />}
+      {open ? <ChevronUpIcon size={22} /> : <ChevronDownIcon size={22} />}
       </div>
       {open && (
         <div className={styles.select_options}>

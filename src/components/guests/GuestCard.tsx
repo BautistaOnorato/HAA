@@ -1,8 +1,8 @@
 import styles from './guests.module.css'
-import type { Guest } from "../../constants/guests"
 import { useState } from 'react'
 import PlusIcon from '../../icons/PlusIcon'
 import CrossIcon from '../../icons/CrossIcon'
+import type { Guest } from '../../types/guest'
 
 interface GuestCardProps {
   guest: Guest
@@ -23,7 +23,7 @@ const GuestCard = ({ guest }: GuestCardProps) => {
   }
 
   return (
-    <div style={{ backgroundImage: `url(${guest.image})` }} className={styles.guest_card}>
+    <div style={{ backgroundImage: `url(${guest.image_url})` }} className={styles.guest_card}>
       <div className={styles.guest_more} onClick={handleOpen}>
         {open ? <CrossIcon size={28} /> : <PlusIcon size={28} />}
       </div>

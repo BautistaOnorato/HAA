@@ -72,7 +72,7 @@
   align-items: center;
   padding: 0.75rem;
   font-size: 1.2rem;
-  width: 400px;
+  width: 300px;
   font-family: "Roboto Flex", sans-serif;
 }
 
@@ -96,7 +96,7 @@
 }
 
 .select_title {
-  font-size: 1.2rem;
+  /* font-size: 1.2rem; */
   display: flex;
   width: 100%;
   align-items: center;
@@ -114,11 +114,20 @@
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  z-index: 50;
 }
 
 .select_option {
   cursor: pointer;
   padding: 1rem;
+}
+
+.select_option:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.select_option:last-child {
+  border-radius: 0 0 8px 8px;
 }
 
 .select_option:hover {

@@ -1,37 +1,38 @@
-export enum roleOptionsEnum {
-  INVITADO = "Invitado",	
-  METODO = "Método",
-  JURADO = "Jurado de viernes",
-  AMIGO = "Amigo de la casa",
-  ESPECIALES = "Especiales"
-}
+import { CategoryEnum, RoleEnum } from "../types/guest"
 
 export const roleOptions = [
-  roleOptionsEnum.INVITADO,
-  roleOptionsEnum.METODO,
-  roleOptionsEnum.JURADO,
-  roleOptionsEnum.AMIGO,
-  roleOptionsEnum.ESPECIALES
+  RoleEnum.AMIGO,
+  RoleEnum.JURADO,
+  RoleEnum.METODO,
+  RoleEnum["MAXIMA CIENCIA"],
+  RoleEnum["MAXIMA VERDAD"],
+  RoleEnum.ESPECIAL
 ]
 
-
-
-export enum categoryOptionsEnum {
-  POLITICA = "Política",	
-  CIENCIA = "Ciencia",
-  DEPORTE = "Deportes",
-  TECNOLOGIA = "Tecnología",
-  CULTURA = "Cultura",
-  OTRO = "Otros"
-}
-
 export const categoryOptions = [
-  categoryOptionsEnum.POLITICA,
-  categoryOptionsEnum.CIENCIA,
-  categoryOptionsEnum.DEPORTE,
-  categoryOptionsEnum.TECNOLOGIA,
-  categoryOptionsEnum.CULTURA,
-  categoryOptionsEnum.OTRO  
+  CategoryEnum.ARQUITECTURA,
+  CategoryEnum.ARTISTA,
+  CategoryEnum.AVENTURA,
+  CategoryEnum.AVES,
+  CategoryEnum.CIENCIA,
+  CategoryEnum.CINE,
+  CategoryEnum.DEPORTE,
+  CategoryEnum.ECONOMIA,
+  CategoryEnum.EMPRESARIO,
+  CategoryEnum.ENTRETENIMIENTO,
+  CategoryEnum.FILOSOFIA,
+  CategoryEnum.FUTBOL,
+  CategoryEnum.GASTRONOMIA,
+  CategoryEnum.HISTORIA,
+  CategoryEnum.MODA,
+  CategoryEnum.MUSICA,
+  CategoryEnum.OTROS,
+  CategoryEnum.PERIODISMO,
+  CategoryEnum.POLITICA,
+  CategoryEnum.PRONOGRAFIA,
+  CategoryEnum.TWITTER,
+  CategoryEnum.VIDEOJUEGOS,
+  CategoryEnum.YOUTUBER
 ]
 
 export enum orderOptionsEnum {

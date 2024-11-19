@@ -5,14 +5,34 @@ import About from '../components/About.astro';
 import EpisodeList from '../components/EpisodeList.astro';
 import Sponsors from '../components/Sponsors.astro';
 import Live from '../components/Live.astro';
+import { TagEnum, type Episode } from '../types/episode';
+import { getEpisodes } from "../services/episodes"
+
+let episodes: Episode[] = [];
+let error = false
+
+try {
+	episodes = await getEpisodes();
+} catch (error) {
+	error = true
+}
+
+const lastFive = episodes.slice(episodes.length - 5, episodes.length).reverse()
+let lastFiveSpecials = episodes.filter((episode) => episode.tags.includes(TagEnum.ESPECIAL))
+lastFiveSpecials = lastFiveSpecials.slice(lastFiveSpecials.length - 5, lastFiveSpecials.length).reverse()
+
 ---
 
 <Layout title="Hay Algo Ahí">
 	<main>
 		<Hero />
 		<About />
-		<EpisodeList title='Últimos Programas' href='#' />
-		<EpisodeList title='Últimos Especiales' href='#' />
+		{
+			!error && (
+			<EpisodeList title='Últimos Programas' href='/programas' data={lastFive} />
+			<EpisodeList title='Últimos Especiales' href='/programas?category=ESPECIAL' data={lastFiveSpecials} />
+			)
+		}
 		<Sponsors />
 		<Live />
 	</main>

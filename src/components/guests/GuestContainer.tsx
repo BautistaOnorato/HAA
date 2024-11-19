@@ -1,15 +1,15 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Filters from "./Filters";
 import GuestGrid from "./GuestGrid";
-import { chunkArray } from "../../funcs/chunk-array";
-import { GUESTS, type Guest } from "../../constants/guests";
 import {
-  categoryOptionsEnum,
-  orderOptionsEnum,
-  roleOptionsEnum,
+  orderOptionsEnum
 } from "../../constants/select-options";
+import { getGuests } from "../../services/guests";
+import type { CategoryEnum, Guest, RoleEnum } from "../../types/guest";
 
 const GuestContainer = () => {
+  const [guests, setGuests] = useState<Guest[]>([]);
+  const [error, setError] = useState(false);
   const [filters, setFilters] = useState<{
     roles: string[];
     categories: string[];
@@ -19,6 +19,20 @@ const GuestContainer = () => {
   });
   const [search, setSearch] = useState("");
   const [order, setOrder] = useState(orderOptionsEnum.NEWEST);
+
+  useEffect(() => {    
+    const fetchGuests = async () => {
+      setError(false);
+      try {
+        const guests = await getGuests();
+        setGuests(guests.reverse());
+      } catch (error) {
+        setError(true);
+      }
+    }  
+
+    fetchGuests();
+  }, [])
 
   const handleSearchChange = (value: string) => setSearch(value);
 
@@ -44,22 +58,47 @@ const GuestContainer = () => {
     }
   };
 
+  const handleResetFilters = () => {
+    setFilters({
+      roles: [],
+      categories: [],
+    });
+  }
+
   const handleOrderChange = (value: orderOptionsEnum) => {
     setOrder(value);
   };
 
   const filteredGuests = useMemo(() => {
-    console.log(filters)
     if (filters.roles.length === 0 && filters.categories.length === 0) {
-      return GUESTS;
+      return guests;
     }
-    return GUESTS.filter((guest) => {
-      const hasRole = filters.roles.length === 0 || filters.roles.some((role) => guest.roles.includes(role as roleOptionsEnum));
-      const hasCategory = filters.categories.length === 0 || filters.categories.some((category) => guest.categories.includes(category as categoryOptionsEnum));
+    return guests.filter((guest) => {
+      const hasRole = filters.roles.length === 0 || filters.roles.some((role) => guest.roles.includes(role as RoleEnum));
+      const hasCategory = filters.categories.length === 0 || filters.categories.find((category) => guest.categories.includes(category as CategoryEnum));
 
       return hasRole && hasCategory;
     });
-  }, [filters]);
+  }, [filters, guests]);
+
+  const orderedGuests = useMemo(() => {
+    switch (order) {
+      case orderOptionsEnum.NEWEST:
+        return filteredGuests;
+      case orderOptionsEnum.OLDEST:
+        return [...filteredGuests].reverse();
+      case orderOptionsEnum.AZ:
+        return [...filteredGuests].sort((a, b) => a.name.localeCompare(b.name));
+      case orderOptionsEnum.ZA:
+        return [...filteredGuests].sort((a, b) => b.name.localeCompare(a.name));
+      default:
+        return filteredGuests;
+    }
+  }, [order, filteredGuests])
+
+  const searchedGuests = useMemo(() => {
+    return orderedGuests.filter((guest) => guest.name.toLowerCase().startsWith(search.toLowerCase()));
+  }, [orderedGuests, search]);
 
   return (
     <>
@@ -68,9 +107,10 @@ const GuestContainer = () => {
         roles={filters.roles}
         onCategoryChange={handleCategoryChange}
         onRoleChange={handleRoleChange}
+        onReset={handleResetFilters}
       />
       <GuestGrid
-        guests={filteredGuests}
+        guests={searchedGuests}
         searchValue={search}
         orderValue={order}
         handleOrderChange={handleOrderChange}

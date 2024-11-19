@@ -1,10 +1,13 @@
 ---
+import type { Episode } from "../types/episode";
+
 interface Props {
   title: string;
   href: string;
+  data: Episode[];
 }
 
-const { title, href } = Astro.props;
+const { title, href, data } = Astro.props;
 ---
 
 <section>
@@ -13,31 +16,15 @@ const { title, href } = Astro.props;
     <a href={href}>Ver Más</a>
   </div>
   <ul>
-    <li>
-      <a href="#">
-        <img src="/programa.jpg" alt="">
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <img src="/programa.jpg" alt="">
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <img src="/programa.jpg" alt="">
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <img src="/programa.jpg" alt="">
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <img src="/programa.jpg" alt="">
-      </a>
-    </li>
+    {
+      data.map((episode) => (
+        <li>
+          <a href={episode.youtube}>
+            <img src={episode.image_url} alt="" />
+          </a>
+        </li>
+      ))
+    }
   </ul>
 </section>
 <style>
@@ -79,5 +66,6 @@ const { title, href } = Astro.props;
     width: 100%;
     height: 100%;
     border-radius: 8px;
+    object-fit: cover;
   }
 </style>
