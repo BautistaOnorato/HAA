@@ -1,0 +1,137 @@
+---
+import { ROUTES } from "../constants/routes";
+import CrossIcon from "../icons/CrossIcon";
+import MenuIcon from "../icons/MenuIcon.astro";
+---
+
+<script>
+  const menuIcon = document.querySelector(".menu_icon");
+  const crossIcon = document.querySelector(".cross_icon");
+  const menu = document.querySelector(".menu");
+
+  menuIcon?.addEventListener("click", () => {
+    menu?.classList.add("active");
+    crossIcon?.classList.remove("hidden");
+    menuIcon?.classList.add("hidden");
+  });
+  
+  crossIcon?.addEventListener("click", () => {
+    menu?.classList.remove("active");
+    crossIcon?.classList.add("hidden");
+    menuIcon?.classList.remove("hidden");
+  });
+</script>
+<nav class="menu_container">
+  <div class="menu_toggle menu_icon">
+    <MenuIcon size={36} />
+  </div>
+  <div class="menu_toggle cross_icon hidden">
+    <CrossIcon size={36} />
+  </div>
+  <ul class="menu">
+    {
+      ROUTES.map((route) => (
+        <li>
+          <a href={route.path}>{route.label}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+<style>
+  .hidden {
+    display: none !important;
+  }
+
+  .menu_container {
+    display: none;
+    /* position: relative; */
+    height: 100%;
+    width: 150px;
+  }
+
+  .menu_toggle {
+    width: 100%;
+    text-align: right;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    height: 80px;
+    padding: 0 3rem 0 0;
+    background-color: #000000;
+    z-index: 100;
+    position: relative;
+  }
+
+  a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  ul {
+    list-style: none;
+    position: absolute;
+    top: -50%;
+    left: 0;
+    width: 100%;
+    background-color: #1e1e1e;
+    z-index: 1;
+    transition: all 0.7s ease-in-out;
+  }
+
+  ul.active {
+    top: 80px;
+  }
+
+  li {
+    padding: 1rem;
+    font-size: 1.5rem;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 1px solid #333333;
+    transition: all 0.3s ease-in-out;
+  }
+
+  li a {
+    width: 100%;
+  }
+
+  li:last-child {
+    border-bottom: none;
+  }
+
+  li:hover {
+    background-color: #333333ab;
+  }
+
+  @keyframes slide-down {
+    0% {
+      top: -50%;
+    }
+
+    100% {
+      top: 80px;
+    }
+  }
+
+  @media screen and (max-width: 960px) {
+    .menu_container {
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 580px) {
+    .menu_container {
+      width: auto;
+    }
+
+    .menu_toggle {
+      padding: 0 1rem 0 0;
+    }
+
+
+  }
+</style>

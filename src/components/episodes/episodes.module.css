@@ -1,0 +1,236 @@
+.episodes_container {
+  font-family: 'Bebas Neue', sans-serif;
+  color: #fff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.episodes_top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.episodes_top p {
+  font-size: 1.8rem;
+}
+
+.episodes_fliters_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  gap: 1rem;
+  max-width: 80%;
+  flex-wrap: wrap;
+}
+
+.episodes_filter_button {
+  font-family: 'Bebas Neue', sans-serif;
+  background-color: transparent;
+  border: 1px solid #565656;
+  outline: none;
+  transition: 0.3s ease-in-out;
+  padding: 0.5rem 2rem;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.8rem;
+}
+
+.episodes_filter_button:hover {
+  background-color: #565656;
+}
+
+.episodes_filter_button.selected {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.all_episodes {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-items: center;
+}
+
+.episode_large_card {
+  width: 100%;
+  display: flex;
+  padding: 1rem 0;
+  gap: 1rem;
+  border-bottom: 1px solid #565656;
+}
+
+.episode_large_card:first-child {
+  /* padding: 0 0 1rem; */
+}
+
+.episode_large_card:last-child {
+  border-bottom: none;
+  /* padding: 1rem 0 0; */
+}
+
+.episode_large_card img {
+  width: 100px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  /* flex: 1; */
+}
+
+.episode_large_card_info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.episode_large_card_title {
+  font-size: 1.5rem;
+}
+
+.episode_large_card_date {
+  font-size: 1.2rem;
+  opacity: 0.7;
+  flex: 1;
+}
+
+.episode_large_card_tags {
+  font-size: 1.2rem;
+  opacity: 1;
+}
+
+.episode_large_card_links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.episode_large_card_link {
+  font-size: 1.2rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5rem 0;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s ease-in-out
+}
+
+.episode_large_card_link_youtube {
+  background-color: #ff0000;
+}
+
+.episode_large_card_link_spotify {
+  background-color: #1db954;
+}
+
+.episode_large_card_link_youtube:hover {
+  box-shadow: 0 0 20px #ff000080, 0 0 20px #ff000046;
+}
+
+.episode_large_card_link_spotify:hover {
+  box-shadow: 0 0 20px #40c05780, 0 0 20px #40c05720;
+}
+
+.episodes_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  width: 100%;
+  gap: 1rem;
+  margin: 0 auto;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 90deg;
+  inherits: true;
+}
+
+.episode_card {
+  display: flex;
+  flex-direction: column;
+  border: 0.35px solid #5656563f;
+  transition: border-image 0.3s ease-in-out;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.episode_card:hover {
+  border: 0.35px solid;
+  border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
+  animation: borderRotate var(--d) linear infinite forwards;
+}
+
+@keyframes borderRotate {
+	100% {
+		--angle: 420deg;
+	}
+}
+
+.episode_card_image {
+  width: 100%;
+  /* border-radius: 8px; */
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.episode_card_info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.episode_card_title {
+  font-size: 1.3rem;
+  font-weight: 400;
+  /* flex: 1; */
+}
+
+.episode_card_links {
+  display: flex;
+  width: 100%;
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  background-color: #333333;
+}
+
+.episode_card_link {
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5rem 0;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  flex: 1;
+}
+
+.episode_card_link_youtube {
+  background-color: #ff0000;
+}
+
+.episode_card_link_spotify {
+  background-color: #1db954;
+}

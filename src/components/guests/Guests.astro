@@ -3,9 +3,7 @@ import GuestContainer from "./GuestContainer"
 ---
 <section>
   <h2>¿Quienes pasaron por nuestros estudios?</h2>
-  <div class="grid_container">
-    <GuestContainer client:load />
-  </div>
+  <GuestContainer client:load />
 </section>
 <style>
   section {
@@ -19,11 +17,5 @@ import GuestContainer from "./GuestContainer"
 
   h2 {
     font-size: 4rem;
-  }
-
-  .grid_container {
-    display: flex;
-    width: 100%;
-    gap: 2rem;
   }
 </style>

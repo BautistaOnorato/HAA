@@ -30,7 +30,7 @@ lastFiveSpecials = lastFiveSpecials.slice(lastFiveSpecials.length - 5, lastFiveS
 		{
 			!error && (
 			<EpisodeList title='Últimos Programas' href='/programas' data={lastFive} />
-			<EpisodeList title='Últimos Especiales' href='/programas?category=ESPECIAL' data={lastFiveSpecials} />
+			<EpisodeList title='Últimos Especiales' href={`/programas?filter=${TagEnum.ESPECIAL}`} data={lastFiveSpecials} />
 			)
 		}
 		<Sponsors />

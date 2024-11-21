@@ -2,9 +2,7 @@ import type { Episode } from "../types/episode"
 
 const URL = import.meta.env.PUBLIC_AWS_URL
 
-export const getEpisodes = async (): Promise<Episode[]> => {
-  console.log(1);
-  
+export const getEpisodes = async (): Promise<Episode[]> => {  
   const res = await fetch(URL + "programas.json")
   if (res.ok) {
     const data = await res.json()

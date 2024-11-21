@@ -1,10 +1,23 @@
+.grid_container {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  height: 100%;
+  position: relative;
+}
+
 .filters_container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  border-right: 1px solid #ddd;
+  /* border-right: 1px solid #ddd; */
   padding-right: 1rem;
   width: 20%;
+  height: 100%;
+  max-height: 500px;
+  /* overflow-y: scroll; */
+  /* position: sticky; */
+  top: 1rem;
 }
 
 .filters_title {
@@ -30,6 +43,7 @@
   display: flex;
   gap: 0.5rem;
   flex-direction: column;
+  padding: 0.5rem 0;
 }
 
 .filter_title {
@@ -51,6 +65,28 @@
   flex-direction: column;
   gap: 0.5rem;
   padding-top: 0.5rem;
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+/* width */
+.filter_options::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+.filter_options::-webkit-scrollbar-track {
+  background: #666666;
+}
+
+/* Handle */
+.filter_options::-webkit-scrollbar-thumb {
+  background: #3f3f3f;
+}
+
+/* Handle on hover */
+.filter_options::-webkit-scrollbar-thumb:hover {
+  background: #333333;
 }
 
 .filter_option {
@@ -81,7 +117,7 @@
 
 .guests {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, minmax(150px, 1fr));
   gap: 1rem;
 }
 
@@ -105,7 +141,7 @@
   cursor: pointer;
   border: 1px solid #565656;
   border-radius: 8px;
-  background-color: #1E1E1E;
+  background-color: #1e1e1e;
   color: #fff;
   font-size: 1rem;
   transition: all 0.2s ease-in-out;
@@ -121,12 +157,12 @@
 }
 
 .guests_pagination button:disabled:hover {
-  background-color: #1E1E1E;
+  background-color: #1e1e1e;
 }
 
 .guests_pagination button.active {
   background-color: #dddddd;
-  color: #1E1E1E;
+  color: #1e1e1e;
 }
 
 .guest_card {
@@ -143,6 +179,15 @@
   overflow: hidden;
 }
 
+.guests_skeleton {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #505050 25%, #4e4e4e 50%, #464646 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
 .guest_more {
   background-color: #333333d8;
   border-radius: 0 8px 0 8px;
@@ -154,6 +199,7 @@
   color: #fff;
   font-size: 1.5rem;
   cursor: pointer;
+  z-index: 2;
 }
 
 .guest_info {
@@ -171,6 +217,7 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  z-index: 1;
 }
 
 .full_guest_info {
@@ -211,7 +258,7 @@
   cursor: pointer;
   color: #fff;
   text-decoration: none;
-  background-color: #1E1E1E;
+  background-color: #1e1e1e;
   /* border-radius: 8px; */
   display: flex;
   justify-content: center;
@@ -221,7 +268,7 @@
 
 .guest_appearance:hover {
   background-color: #fff;
-  color: #1E1E1E;
+  color: #1e1e1e;
 }
 
 @keyframes slide-up {
@@ -239,5 +286,14 @@
   }
   100% {
     transform: translateY(calc(100% - 3.5rem));
+  }
+}
+
+@keyframes loading {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
   }
 }

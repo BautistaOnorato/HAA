@@ -11,23 +11,26 @@
     </p>
     <p class="warning">Advertencia: si sintoniza este programa espere lo inesperado.</p>
   </div>
-  <img src="/about.png" alt="">
+  <div class="about_image">
+    <img src="/about.png" alt="">
+  </div>
 </section>
 <style>
   section {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr minmax(100px, 400px);
     background-color: #1e1e1e;
     color: #ffffff;
-    padding: 3rem;
-    position: relative;
-    justify-content: space-between;
+    padding: 0 3rem;
+    gap: 3rem;
   }
 
   .about_container {
     display: flex;
     flex-direction: column;
     gap: .5rem;
-    width: 60%;
+    width: 100%;
+    padding: 3rem 0;
   }
 
   h2 {
@@ -49,12 +52,42 @@
     margin-top: 2.5rem;
   }
 
-  img {
-    width: 470px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
+  .about_image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /* overflow: hidden; */
+    /* background-color: blue; */
+    padding: 3rem 0;
   }
 
+  img {
+    height: 115%;
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+    object-fit: cover;
+  }
+
+  @media screen and (max-width: 1160px) {
+    .about_image {
+      display: none;
+    }
+
+    section {
+      display: flex;
+      text-align: center;
+    }
+  }
+
+  @media screen and (max-width: 620px) {
+    .about_container {
+      padding: 2rem 0;
+    }
+
+    .warning {
+      margin-top: 1rem;
+    }
+  }
 
 </style>

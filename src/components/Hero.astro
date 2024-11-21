@@ -20,7 +20,7 @@
     height: 100%;
     position: absolute;
     z-index: -1;
-    background-image: url("/public/hero/hero_1.jpg");
+    background-image: url("/hero/hero_1.jpg");
     background-repeat: no-repeat;
     background-position: center 30%;
     background-size: cover;
@@ -35,7 +35,7 @@
     font-family: "Roboto Flex Variable", sans-serif;
     font-weight: 400;
     font-size: 2rem;
-    color: #ffffffc0;
+    color: #d8d8d8;
     text-align: center;
     text-transform: uppercase;
     position: absolute;
@@ -47,5 +47,28 @@
   span {
     font-weight: 700;
     color: #ffffff;
+  }
+
+  @media screen and (max-width: 900px) {
+    section {
+      height: 50vw;
+    }
+
+    .title {
+      width: 80%;
+    }
+
+    p {
+      font-size: 1.5rem;
+      padding-bottom: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 620px) {
+    p {
+      font-size: 1.2rem;
+      padding-bottom: 0.5rem;
+      
+    }
   }
 </style>

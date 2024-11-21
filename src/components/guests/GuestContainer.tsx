@@ -6,6 +6,7 @@ import {
 } from "../../constants/select-options";
 import { getGuests } from "../../services/guests";
 import type { CategoryEnum, Guest, RoleEnum } from "../../types/guest";
+import styles from "./guests.module.css";
 
 const GuestContainer = () => {
   const [guests, setGuests] = useState<Guest[]>([]);
@@ -101,7 +102,7 @@ const GuestContainer = () => {
   }, [orderedGuests, search]);
 
   return (
-    <>
+    <div className={styles.grid_container}>
       <Filters
         categories={filters.categories}
         roles={filters.roles}
@@ -116,7 +117,7 @@ const GuestContainer = () => {
         handleOrderChange={handleOrderChange}
         handleSearchChange={handleSearchChange}
       />
-    </>
+    </div>
   );
 };
 

@@ -1,0 +1,31 @@
+import SpotifyIcon from '../../icons/SpotifyIcon'
+import YoutubeIcon from '../../icons/YoutubeIcon'
+import type { Episode } from '../../types/episode'
+import styles from './episodes.module.css'
+
+interface EpisodeCardProps {
+  episode: Episode
+}
+
+const EpisodeCard = ({ episode }: EpisodeCardProps) => {
+  return (
+    <div className={styles.episode_card}>
+      <div className={styles.episode_card_links}>
+        <a href={episode.youtube} className={`${styles.episode_card_link} ${styles.episode_card_link_youtube}`}>
+          <YoutubeIcon size={24} />
+        </a>
+        {episode.spotify && (
+          <a href={episode.spotify} className={`${styles.episode_card_link} ${styles.episode_card_link_spotify}`}>
+            <SpotifyIcon size={24} />
+          </a>
+        )}
+      </div>
+      <img className={styles.episode_card_image} src={episode.image_url} alt={episode.title + " image"} />
+      <div className={styles.episode_card_info}>
+        <p className={styles.episode_card_title}>{episode.title}</p>
+      </div>
+    </div>
+  )
+}
+
+export default EpisodeCard

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Input from "../common/Input";
 import styles from "./guests.module.css";
 import Select from "../common/Select";
@@ -17,6 +17,8 @@ interface GuestGridProps {
   handleOrderChange: (value: orderOptionsEnum) => void;
   handleSearchChange: (value: string) => void;
 }
+
+const ITEMS = 20;
 
 const GuestGrid = ({
   guests,
@@ -40,18 +42,18 @@ const GuestGrid = ({
           <button onClick={() => setPage(0)} disabled={page === 0}>
             <ChevronFirstIcon size={24} />
           </button>
-          <button onClick={() => setPage(page - 30)} disabled={page === 0}>
+          <button onClick={() => setPage(page - ITEMS)} disabled={page === 0}>
             <ChevronLeftIcon size={24} />
           </button>
           <button
-            onClick={() => setPage(page + 30)}
-            disabled={page === guests.length - (guests.length % 30)}
+            onClick={() => setPage(page + ITEMS)}
+            disabled={page === guests.length - (guests.length % ITEMS)}
           >
             <ChevronRightIcon size={24} />
           </button>
           <button
-            onClick={() => setPage(guests.length - (guests.length % 30))}
-            disabled={page === guests.length - (guests.length % 30)}
+            onClick={() => setPage(guests.length - (guests.length % ITEMS))}
+            disabled={page === guests.length - (guests.length % ITEMS)}
           >
             <ChevronLastIcon size={24} />
           </button>
@@ -63,17 +65,25 @@ const GuestGrid = ({
           className="guests_select"
         />
       </div>
-      <div className={styles.guests}>
-        {guests.slice(page, page + 30).map((guest) => (
-          <GuestCard guest={guest} key={guest.name} />
-        ))}
-      </div>
+      <Suspense fallback={<GuestGirdSkeleton />}>
+        <div className={styles.guests}>
+          {guests.slice(page, page + ITEMS).map((guest) => (
+            <GuestCard guest={guest} key={guest.name} />
+          ))}
+        </div>
+      </Suspense>
+    </div>
+  );
+};
+
+const GuestGirdSkeleton = () => {
+  return (
+    <div className={styles.guests}>
+      {
+        Array(ITEMS).fill("").map((_, index) => <div className={styles.guests_skeleton} key={index}></div>)
+      }
     </div>
   );
 };
 
 export default GuestGrid;
-
-/*
-221 / 30 = 7 
-*/

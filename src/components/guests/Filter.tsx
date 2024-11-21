@@ -12,7 +12,7 @@ interface FilterProps {
 }
 
 const Filter = ({ name, options, value, onChange }: FilterProps) => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
   return (
     <div className={styles.filter}>
       <div className={styles.filter_title} onClick={() => setOpen(!open)}>
