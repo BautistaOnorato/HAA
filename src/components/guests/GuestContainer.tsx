@@ -9,8 +9,10 @@ import type { CategoryEnum, Guest, RoleEnum } from "../../types/guest";
 import styles from "./guests.module.css";
 
 const GuestContainer = () => {
+  const [openFilters, setOpenFilters] = useState(false);
   const [guests, setGuests] = useState<Guest[]>([]);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState<{
     roles: string[];
     categories: string[];
@@ -21,14 +23,26 @@ const GuestContainer = () => {
   const [search, setSearch] = useState("");
   const [order, setOrder] = useState(orderOptionsEnum.NEWEST);
 
+  const handleOpenFilters = () => {
+    if (openFilters) {
+      document.body.classList.remove(styles.no_scroll);
+    } else {
+      document.body.classList.add(styles.no_scroll);
+    }
+    setOpenFilters(!openFilters)
+  };
+
   useEffect(() => {    
     const fetchGuests = async () => {
       setError(false);
+      setLoading(true);
       try {
         const guests = await getGuests();
         setGuests(guests.reverse());
       } catch (error) {
         setError(true);
+      } finally {
+        setLoading(false);
       }
     }  
 
@@ -109,6 +123,8 @@ const GuestContainer = () => {
         onCategoryChange={handleCategoryChange}
         onRoleChange={handleRoleChange}
         onReset={handleResetFilters}
+        openFilters={openFilters}
+        handleOpenFilters={handleOpenFilters}
       />
       <GuestGrid
         guests={searchedGuests}
@@ -116,6 +132,9 @@ const GuestContainer = () => {
         orderValue={order}
         handleOrderChange={handleOrderChange}
         handleSearchChange={handleSearchChange}
+        openFilters={openFilters}
+        handleOpenFilters={handleOpenFilters}
+        isLoading={loading}
       />
     </div>
   );

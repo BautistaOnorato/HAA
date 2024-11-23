@@ -27,4 +27,10 @@ const { image, align, imagePosition } = Astro.props
     object-fit: cover;
     filter: brightness(40%);
   }
+
+  @media screen and (max-width: 800px) {
+    img {
+      object-position: center center;
+    }
+  }
 </style>

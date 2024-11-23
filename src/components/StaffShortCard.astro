@@ -45,4 +45,16 @@ const { name, role, image } = Astro.props;
     font-size: 1.2rem;
     opacity: 0.7;
   }
+
+  @media screen and (max-width: 800px) {
+    .card {
+      /* max-height: 250px; */
+    }
+
+    img {
+      /* max-height: 60%; */
+      object-fit: cover;
+      object-position: top;
+    }
+  }
 </style>

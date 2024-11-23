@@ -1,14 +1,14 @@
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import Input from "../common/Input";
 import styles from "./guests.module.css";
 import Select from "../common/Select";
 import { orderOptions, orderOptionsEnum } from "../../constants/select-options";
 import GuestCard from "./GuestCard";
 import type { Guest } from "../../types/guest";
-import ChevronFirstIcon from "../../icons/ChevronFirstIcon";
-import ChevronLeftIcon from "../../icons/ChevronLeftIcon";
-import ChevronRightIcon from "../../icons/ChevronRightIcon";
-import ChevronLastIcon from "../../icons/ChevronLastIcon";
+
+import FilterIcon from "../../icons/FilterIcon";
+import FilterOffIcon from "../../icons/FilterOffIcon";
+import GuestsPagination from "./GuestsPagination";
 
 interface GuestGridProps {
   guests: Guest[];
@@ -16,6 +16,9 @@ interface GuestGridProps {
   orderValue: orderOptionsEnum;
   handleOrderChange: (value: orderOptionsEnum) => void;
   handleSearchChange: (value: string) => void;
+  openFilters: boolean;
+  handleOpenFilters: () => void;
+  isLoading: boolean;
 }
 
 const ITEMS = 20;
@@ -26,52 +29,59 @@ const GuestGrid = ({
   orderValue,
   handleOrderChange,
   handleSearchChange,
+  openFilters,
+  handleOpenFilters,
+  isLoading,
 }: GuestGridProps) => {
   const [page, setPage] = useState(0);
 
+  const handlePage = (value: number) => setPage(value);
+
   return (
-    <div className={styles.guests_container}>
+    <div
+      className={styles.guests_container}
+      onClick={() => console.log(page, guests.length)}
+    >
       <div className={styles.guests_top} onClick={() => console.log(guests)}>
+        <div className={styles.filter_icon} onClick={handleOpenFilters}>
+          {openFilters ? <FilterOffIcon size={24} /> : <FilterIcon size={24} />}
+        </div>
         <Input
           name="search"
           placeholder="Buscar..."
           value={searchValue}
           onChange={handleSearchChange}
         />
-        <div className={styles.guests_pagination}>
-          <button onClick={() => setPage(0)} disabled={page === 0}>
-            <ChevronFirstIcon size={24} />
-          </button>
-          <button onClick={() => setPage(page - ITEMS)} disabled={page === 0}>
-            <ChevronLeftIcon size={24} />
-          </button>
-          <button
-            onClick={() => setPage(page + ITEMS)}
-            disabled={page === guests.length - (guests.length % ITEMS)}
-          >
-            <ChevronRightIcon size={24} />
-          </button>
-          <button
-            onClick={() => setPage(guests.length - (guests.length % ITEMS))}
-            disabled={page === guests.length - (guests.length % ITEMS)}
-          >
-            <ChevronLastIcon size={24} />
-          </button>
-        </div>
         <Select
           options={orderOptions}
           value={orderValue}
           onChange={handleOrderChange}
-          className="guests_select"
+          className={styles.guests_select}
         />
       </div>
-      <Suspense fallback={<GuestGirdSkeleton />}>
-        <div className={styles.guests}>
-          {guests.slice(page, page + ITEMS).map((guest) => (
-            <GuestCard guest={guest} key={guest.name} />
-          ))}
-        </div>
-      </Suspense>
+
+      {isLoading ? (
+        <GuestGirdSkeleton />
+      ) : (
+        <>
+          <div
+            className={`${styles.guests} ${
+              openFilters ? styles.guests_open : ""
+            }`}
+          >
+            {guests.slice(page, page + ITEMS).map((guest) => (
+              <GuestCard guest={guest} key={guest.name} />
+            ))}
+          </div>
+
+          <GuestsPagination
+            page={page}
+            handlePage={handlePage}
+            items={ITEMS}
+            arrLength={guests.length}
+          />
+        </>
+      )}
     </div>
   );
 };
@@ -79,9 +89,11 @@ const GuestGrid = ({
 const GuestGirdSkeleton = () => {
   return (
     <div className={styles.guests}>
-      {
-        Array(ITEMS).fill("").map((_, index) => <div className={styles.guests_skeleton} key={index}></div>)
-      }
+      {Array(ITEMS)
+        .fill("")
+        .map((_, index) => (
+          <div className={styles.guests_skeleton} key={index}></div>
+        ))}
     </div>
   );
 };

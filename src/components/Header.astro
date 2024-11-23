@@ -1,15 +1,10 @@
 ---
-import { checkLiveStream, getYoutubeLiveInfo } from "../services/youtube";
+import { getYoutubeLiveInfo } from "../services/youtube";
 import { ROUTES } from "../constants/routes";
 import Menu from "./Menu.astro";
-const channelId = "UCvCTWHCbBC0b9UIeLeNs8ug";
+const channelId = "UC6pJGaMdx5Ter_8zYbLoRgA";
 
-const data = { isLive: false, link: "" };
-try {
-  await getYoutubeLiveInfo(channelId);
-} catch (error) {
-  
-}
+const data = await getYoutubeLiveInfo(channelId);
 ---
 
 <header>
@@ -29,7 +24,7 @@ try {
       {
         data.isLive ? (
           <div class="live">
-            <a href={`https://www.youtube.com/channel/${channelId}/live`} class="live_anchor">
+            <a href={data.link} target="_blank" class="live_anchor">
               <div class="live_circle" /> En Vivo
             </a>
           </div>

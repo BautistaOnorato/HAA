@@ -31,8 +31,19 @@ import StaffShortCard from "./StaffShortCard.astro";
   div {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    gap: 1rem;
     width: 100%;
   }
 
+  @media screen and (max-width: 800px) {
+    section {
+      padding: 1.5rem;
+    }
+
+    /* div {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    } */
+  }
 </style>

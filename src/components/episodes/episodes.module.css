@@ -60,6 +60,11 @@
   align-items: center;
 }
 
+.episode_large_card_mobile_info {
+  width: 100%;
+  display: flex;
+}
+
 .episode_large_card {
   width: 100%;
   display: flex;
@@ -146,7 +151,7 @@
 
 .episodes_grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   width: 100%;
   gap: 1rem;
   margin: 0 auto;
@@ -233,4 +238,96 @@
 
 .episode_card_link_spotify {
   background-color: #1db954;
+}
+
+@media screen and (max-width: 1000px) {
+  .all_episodes {
+    width: 100%;
+  }
+
+  .episodes_fliters_container {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .episode_large_card {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 0;
+    gap: 0;
+    border-bottom: none;
+  }
+
+  img.episode_large_card_image {
+    aspect-ratio: 1/1;
+    width: 200px;
+    height: 100%;
+  }
+
+  .episode_large_card_info {
+    padding: 1rem;
+    flex: auto;
+  }
+
+  .episode_large_card_mobile_info {
+    flex-direction: column;
+  }
+
+  .episode_large_card_links {
+    grid-column: 1/3;
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .episode_large_card_link {
+    flex: 1;
+  }
+
+  .episodes_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    width: 100%;
+    gap: 1rem;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .episodes_filter_button {
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+  }
+
+  .episode_large_card_info {
+    grid-row: 2/3;
+    grid-column: 1/3;
+  }
+
+  .episode_large_card_links {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+  }
+
+  .episode_large_card_link {
+    flex: 1;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .episode_large_card_link span {
+    display: none;
+  }
+
+  .episodes_filter_button {
+    padding: 0.5rem 0.75rem;
+    font-size: 1.2rem;
+  }
 }

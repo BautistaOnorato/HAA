@@ -36,16 +36,26 @@ export async function checkLiveStream(
 export async function getYoutubeLiveInfo(
   channelId: string
 ) {
-  const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+  const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=UC6pJGaMdx5Ter_8zYbLoRgA`;
 
   try {
     const response = await fetch(rssUrl);
     const xml = await response.text();
     const result = await parseStringPromise(xml);
 
-    const videos = result.feed.entry.filter((entry: any) => entry.title[0].toLowerCase().includes("vorterix en vivo"));
-    console.log(videos);
+    const videos = result.feed.entry;
+    const video = videos.find((video: any) => video.title[0].toLowerCase().includes("hay algo ah") && video.title[0].toLowerCase().includes("en vivo"));
+
+    if (video) {
+      return {
+        isLive: true,
+        link: `https://www.youtube.com/watch?v=${video['yt:videoId'][0]}`,
+      }
+    } else {
+      return { isLive: false };
+    }
   } catch (error) {
     console.error(error);
+    return { isLive: false };
   }
 }

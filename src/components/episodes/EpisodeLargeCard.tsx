@@ -29,7 +29,7 @@ const EpisodeLargeCard = ({ episode }: EpisodeLargeCardProps) => {
           className={`${styles.episode_large_card_link} ${styles.episode_large_card_link_youtube}`}
         >
           <YoutubeIcon size={24} />
-          YouTube
+          <span>YouTube</span>
         </a>
         {episode.spotify && (
           <a
@@ -37,7 +37,7 @@ const EpisodeLargeCard = ({ episode }: EpisodeLargeCardProps) => {
             className={`${styles.episode_large_card_link} ${styles.episode_large_card_link_spotify}`}
           >
             <SpotifyIcon size={24} />
-            Spotify
+            <span>Spotify</span>
           </a>
         )}
       </div>

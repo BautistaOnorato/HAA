@@ -102,4 +102,20 @@ import Layout from "../layouts/Layout.astro";
   .schedule {
     margin-top: 2rem;
   }
+
+  @media screen and (max-width: 900px) {
+    .container {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .container {
+      padding: 1.5rem;
+    }
+
+    h3 {
+      font-size: 2.5rem;
+    }
+  }
 </style>
