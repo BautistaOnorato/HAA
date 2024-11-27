@@ -8,15 +8,13 @@ import MenuIcon from "../icons/MenuIcon.astro";
   const menuIcon = document.querySelector(".menu_icon");
   const crossIcon = document.querySelector(".cross_icon");
   const menu = document.querySelector(".menu");
-  const content = document.querySelector("main");
 
   const closeMenu = () => {
     console.log("close fn");
     menu?.classList.remove("active");
     crossIcon?.classList.add("hidden");
     menuIcon?.classList.remove("hidden");
-    content?.classList.remove("no_scroll");
-    console.log(content);
+    document.body.style.overflow = "auto";
     
   }
   
@@ -24,19 +22,15 @@ import MenuIcon from "../icons/MenuIcon.astro";
     menu?.classList.add("active");
     crossIcon?.classList.remove("hidden");
     menuIcon?.classList.add("hidden");
-    content?.classList.add("no_scroll");
+    document.body.style.overflow = "hidden";
   }
   
-  document.body.addEventListener("click", (e) => {
-    console.log("close");
-    
+  document.body.addEventListener("click", () => {    
     closeMenu()
   });
 
   menuIcon?.addEventListener("click", (e) => {
     e.stopPropagation()
-    console.log("open");
-    
     openMenu();
   });
   
@@ -48,11 +42,13 @@ import MenuIcon from "../icons/MenuIcon.astro";
   menu?.addEventListener("click", (e) => e.stopPropagation());
 </script>
 <nav class="menu_container">
-  <div class="menu_toggle menu_icon">
-    <MenuIcon size={36} />
-  </div>
-  <div class="menu_toggle cross_icon hidden">
-    <CrossIcon size={36} />
+  <div class="menu_toggle_container">
+    <div class="menu_toggle menu_icon">
+      <MenuIcon size={36} className="icon" />
+    </div>
+    <div class="menu_toggle cross_icon hidden">
+      <CrossIcon size={36} className="icon" />
+    </div>
   </div>
   <ul class="menu">
     {
@@ -72,23 +68,34 @@ import MenuIcon from "../icons/MenuIcon.astro";
   .menu_container {
     display: none;
     /* position: relative; */
-    height: 100%;
+    width: 100px;
+  }
+
+  .menu_toggle_container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 80px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 200;
+    background-color: #000000;
     width: 100px;
   }
   
   .menu_toggle {
-    padding: 0 1rem 0 0;
-    width: 100%;
+    background-color: #000000;
+    margin: 0 1rem 0 0;
+    width: min-content;
     text-align: right;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    cursor: pointer;
-    height: 80px;
-    background-color: #000000;
+    /* height: 80px; */
     z-index: 100;
     position: relative;
+    cursor: pointer;
   }
 
   a {
@@ -102,7 +109,7 @@ import MenuIcon from "../icons/MenuIcon.astro";
     top: -30%;
     left: 0;
     width: 100%;
-    background-color: #131313;
+    background-color: #d10000;
     z-index: 1;
     transition: all 0.7s ease-in-out;
   }
@@ -146,7 +153,7 @@ import MenuIcon from "../icons/MenuIcon.astro";
 
   @media screen and (max-width: 960px) {
     .menu_container {
-      display: block;
+      display: flex;
     }
   }
 </style>

@@ -2,12 +2,13 @@ import { useEffect, useRef, useState } from "react";
 
 export const useClickOutside = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const menuRef = useRef<undefined | HTMLElement>();
+  const menuRef = useRef<null | HTMLElement>(null);
 
   useEffect(() => {
     const handler = (e: any) => {
       if (!menuRef.current) return
-      if (menuRef.current.contains(e.target)) {
+
+      if (!menuRef.current.contains(e.target)) {
         setShowMenu(false);
       }
     };
@@ -18,9 +19,11 @@ export const useClickOutside = () => {
     };
   });
 
+  const handleMenu = (value: boolean) => setShowMenu(value);
+
   return {
     menuRef,
     showMenu,
-    setShowMenu,
+    handleMenu,
   };
 };
