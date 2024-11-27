@@ -50,7 +50,7 @@ const { name, role, description, image, instagram, twitter, reverse } =
     gap: 1rem;
     border: 1px solid #565656;
     min-height: 320px;
-    /* overflow: hidden; */
+    max-height: 500px;
   }
 
   .reverse {
@@ -70,7 +70,7 @@ const { name, role, description, image, instagram, twitter, reverse } =
     height: calc(100% + 1rem);
     width: 100%;
     object-fit: cover;
-    object-position: right;
+    object-position: top right;
   }
 
   .reverse .image img {
@@ -124,21 +124,34 @@ const { name, role, description, image, instagram, twitter, reverse } =
     opacity: 0.7;
   }
 
+  @media screen and (min-width: 1300px) {
+    .card {
+      max-height: 400px;
+    }
+  }
+
   @media screen and (max-width: 1100px) {
     .card {
-      /* height: 320px; */
+      max-height: 350px;
     }
 
     .image {
-      width: 30%;
+      width: 27%;
+      /* height: calc(100% + 1px); */
+      /* align-self: flex-end; */
+      
     }
 
     .image img {
-      object-position: top;
+     
     }
 
     .content {
       width: 70%;
+    }
+
+    .reverse .content {
+      width: 100%;
     }
   }
 
@@ -147,6 +160,8 @@ const { name, role, description, image, instagram, twitter, reverse } =
       flex-direction: column;
       align-items: center;
       gap: 0;
+      height: auto;
+      max-height: none;
     }
 
     .image {
@@ -170,9 +185,17 @@ const { name, role, description, image, instagram, twitter, reverse } =
       object-position: top;
     }
 
-    .content {
+    .content, .reverse .content {
       padding: 1rem;
       width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 563px) {
+    .image img {
+      object-position: top;
+      max-height: 100%;
+      width: 50%;
     }
   }
 </style>

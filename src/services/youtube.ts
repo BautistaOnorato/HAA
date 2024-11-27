@@ -1,3 +1,4 @@
+import { getCountryTime } from "../funcs/utils";
 import type { YoutubeChannel } from "../types/youtube";
 import { parseStringPromise } from "xml2js";
 
@@ -33,10 +34,12 @@ export async function checkLiveStream(
   }
 }
 
-export async function getYoutubeLiveInfo(
-  channelId: string
-) {
-  const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=UC6pJGaMdx5Ter_8zYbLoRgA`;
+export async function getYoutubeLiveInfo(channelId: string) {
+  if (getCountryTime(-3).getHours() < 21) {
+    return { isLive: false };
+  }
+
+  const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
 
   try {
     const response = await fetch(rssUrl);
@@ -44,13 +47,17 @@ export async function getYoutubeLiveInfo(
     const result = await parseStringPromise(xml);
 
     const videos = result.feed.entry;
-    const video = videos.find((video: any) => video.title[0].toLowerCase().includes("hay algo ah") && video.title[0].toLowerCase().includes("en vivo"));
+    const video = videos.find(
+      (video: any) =>
+        video.title[0].toLowerCase().includes("hay algo ah") &&
+        video.title[0].toLowerCase().includes("en vivo")
+    );
 
-    if (video) {
+    if (video) {   
       return {
         isLive: true,
-        link: `https://www.youtube.com/watch?v=${video['yt:videoId'][0]}`,
-      }
+        link: `https://www.youtube.com/watch?v=${video["yt:videoId"][0]}`,
+      };
     } else {
       return { isLive: false };
     }

@@ -1,3 +1,4 @@
+import { formatDate } from '../../funcs/utils'
 import SpotifyIcon from '../../icons/SpotifyIcon'
 import YoutubeIcon from '../../icons/YoutubeIcon'
 import type { Episode } from '../../types/episode'
@@ -23,6 +24,8 @@ const EpisodeCard = ({ episode }: EpisodeCardProps) => {
       <img className={styles.episode_card_image} src={episode.image_url} alt={episode.title + " image"} />
       <div className={styles.episode_card_info}>
         <p className={styles.episode_card_title}>{episode.title}</p>
+        <p className={styles.episode_card_date}>{formatDate(new Date(episode.date))}</p>
+        <p className={styles.episode_card_tags}>{episode.tags.join(", ")}</p>
       </div>
     </div>
   )

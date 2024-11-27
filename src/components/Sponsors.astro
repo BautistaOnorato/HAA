@@ -1,101 +1,57 @@
+---
+import { SPONSORS } from "../constants/sponsors";
+---
+
 <section>
   <h3>Recomendaciones Personales</h3>
   <div>
     <ul>
-      <li>
-        <a href="#">
-          <img src="/sponsors/enlaca.png" alt="" />
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="/sponsors/medical_hair.png" alt="" />
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="/sponsors/yelmo.png" alt="" />
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="/sponsors/medife.png" alt="" />
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="/sponsors/bieckert.png" alt="" />
-        </a>
-      </li>
+      {
+        SPONSORS.map((sponsor) => (
+          <li>
+            <a href={sponsor.href}>
+              <img src={sponsor.image} alt="" />
+            </a>
+          </li>
+        ))
+      }
     </ul>
     <ul>
-      <li>
-        <a href="#">
-          <img src="/sponsors/enlaca.png" alt="" />
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="/sponsors/medical_hair.png" alt="" />
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="/sponsors/yelmo.png" alt="" />
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="/sponsors/medife.png" alt="" />
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="/sponsors/bieckert.png" alt="" />
-        </a>
-      </li>
+      {
+        SPONSORS.map((sponsor) => (
+          <li>
+            <a href={sponsor.href}>
+              <img src={sponsor.image} alt="" />
+            </a>
+          </li>
+        ))
+      }
     </ul>
     <ul>
-      <li>
-        <a href="#">
-          <img src="/sponsors/enlaca.png" alt="" />
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="/sponsors/medical_hair.png" alt="" />
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="/sponsors/yelmo.png" alt="" />
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="/sponsors/medife.png" alt="" />
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <img src="/sponsors/bieckert.png" alt="" />
-        </a>
-      </li>
+      {
+        SPONSORS.map((sponsor) => (
+          <li>
+            <a href={sponsor.href}>
+              <img src={sponsor.image} alt="" />
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </section>
 <style>
   section {
-    padding: 3rem;
+    padding: 2rem 3rem;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 0rem;
     align-items: center;
   }
 
   h3 {
-    font-size: 2.8rem;
-    color: #ffffff;
+    font-size: var(--subtitle_size);
+    color: var(--primary_text);
     text-align: center;
   }
 
@@ -113,7 +69,7 @@
     gap: 3rem;
     animation: slide 8s infinite linear;
     align-items: center;
-    padding: 2rem 0;
+    padding: 1.2rem 0;
   }
 
   img {
@@ -137,6 +93,10 @@
     section {
       padding: 2rem;
       gap: 1rem;
+    }
+
+    h3 {
+      font-size: var(--subtitle_mobile_size);
     }
 
     img {

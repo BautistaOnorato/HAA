@@ -1,6 +1,6 @@
 .episodes_container {
-  font-family: 'Bebas Neue', sans-serif;
-  color: #fff;
+  font-family: var(--primary_font);
+  color: var(--primary_text);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
 }
 
 .episodes_top p {
-  font-size: 1.8rem;
+  font-size: var(--short_title_size);
 }
 
 .episodes_fliters_container {
@@ -31,26 +31,26 @@
 }
 
 .episodes_filter_button {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--primary_font);
   background-color: transparent;
-  border: 1px solid #565656;
+  border: 1px solid var(--border_color);
   outline: none;
   transition: 0.3s ease-in-out;
   padding: 0.5rem 2rem;
   display: flex;
   justify-content: center;
-  color: #fff;
+  color: var(--primary_text);
   cursor: pointer;
-  font-size: 1.8rem;
+  font-size: var(--short_title_size);
 }
 
 .episodes_filter_button:hover {
-  background-color: #565656;
+  background-color: #222222;
 }
 
 .episodes_filter_button.selected {
-  background-color: #ffffff;
-  color: #333333;
+  background-color: var(--primary_text);
+  color: var(--primary_bg);
 }
 
 .all_episodes {
@@ -70,7 +70,7 @@
   display: flex;
   padding: 1rem 0;
   gap: 1rem;
-  border-bottom: 1px solid #565656;
+  border-bottom: 1px solid var(--border_color);
 }
 
 .episode_large_card:first-child {
@@ -96,17 +96,17 @@
 }
 
 .episode_large_card_title {
-  font-size: 1.5rem;
+  font-size: var(--paragraph_size);
 }
 
 .episode_large_card_date {
-  font-size: 1.2rem;
+  font-size: var(--paragraph_mobile_size);
   opacity: 0.7;
   flex: 1;
 }
 
 .episode_large_card_tags {
-  font-size: 1.2rem;
+  font-size: var(--paragraph_mobile_size);
   opacity: 1;
 }
 
@@ -119,10 +119,10 @@
 }
 
 .episode_large_card_link {
-  font-size: 1.2rem;
+  font-size: var(--paragraph_mobile_size);
   cursor: pointer;
   text-decoration: none;
-  color: #fff;
+  color: var(--primary_text);
   padding: 0.5rem 0;
   width: 100px;
   display: flex;
@@ -204,7 +204,7 @@
 }
 
 .episode_card_title {
-  font-size: 1.3rem;
+  font-size: var(--paragraph_size);
   font-weight: 400;
   /* flex: 1; */
 }
@@ -215,13 +215,12 @@
   /* position: absolute; */
   top: 0;
   left: 0;
-  background-color: #333333;
 }
 
 .episode_card_link {
   cursor: pointer;
   text-decoration: none;
-  color: #fff;
+  color: var(--primary_text);
   padding: 0.5rem 0;
   width: 100px;
   display: flex;
@@ -238,6 +237,11 @@
 
 .episode_card_link_spotify {
   background-color: #1db954;
+}
+
+.episode_card_tags, .episode_card_date {
+  display: none;
+  font-size: var(--paragraph_mobile_size);
 }
 
 @media screen and (max-width: 1000px) {
@@ -286,18 +290,65 @@
   }
 
   .episodes_grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    flex-direction: column;
     width: 100%;
     gap: 1rem;
     margin: 0 auto;
+  }
+
+  .episode_card {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+  }
+
+  .episode_card_image {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    aspect-ratio: 1/1;
+    height: 100%;
+  }
+
+  .episode_card_info {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .episode_card_date {
+    flex: 1;
+    display: block;
+  }
+
+  .episode_card_tags {
+    display: block;
+  }
+
+  .episode_card_links {
+    grid-column: 1/4;
+    flex-direction: row;
+    gap: 0;
+    align-items: flex-end;
+  }
+
+  .episode_card_link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
 @media screen and (max-width: 570px) {
   .episodes_filter_button {
     padding: 0.5rem 1rem;
-    font-size: 1.5rem;
+    font-size: var(--paragraph_size);
   }
 
   .episode_large_card_info {
@@ -328,6 +379,6 @@
 
   .episodes_filter_button {
     padding: 0.5rem 0.75rem;
-    font-size: 1.2rem;
+    font-size: var(--paragraph_mobile_size);
   }
 }

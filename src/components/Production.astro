@@ -1,17 +1,20 @@
 ---
+import { PRODUCTION } from "../constants/staff";
 import StaffShortCard from "./StaffShortCard.astro";
 ---
 
 <section>
   <h3>La producción</h3>
   <div>
-    <StaffShortCard  name="Juan Ruffo" role="Director" image="/staff/joa.png"/>
-    <StaffShortCard  name="Juan Ruffo" role="Director" image="/staff/joa.png"/>
-    <StaffShortCard  name="Juan Ruffo" role="Director" image="/staff/joa.png"/>
-    <StaffShortCard  name="Juan Ruffo" role="Director" image="/staff/joa.png"/>
-    <StaffShortCard  name="Juan Ruffo" role="Director" image="/staff/joa.png"/>
-    <StaffShortCard  name="Juan Ruffo" role="Director" image="/staff/joa.png"/>
-    <StaffShortCard  name="Juan Ruffo" role="Director" image="/staff/joa.png"/>
+    {
+      PRODUCTION.map((staff) => (
+        <StaffShortCard
+          name={staff.name}
+          role={staff.role}
+          image={staff.image}
+        />
+      ))
+    }
   </div>
 </section>
 <style>
@@ -40,6 +43,11 @@ import StaffShortCard from "./StaffShortCard.astro";
       padding: 1.5rem;
     }
 
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
     /* div {
       display: flex;
       flex-direction: column;

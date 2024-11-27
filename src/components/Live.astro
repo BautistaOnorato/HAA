@@ -1,28 +1,29 @@
 ---
 import GreenIcon from "../icons/GreenIcon.astro";
+import SpotifyIcon from "../icons/SpotifyIcon";
 import TwitchIcon from "../icons/TwitchIcon.astro";
 import YoutubeIcon from "../icons/YoutubeIcon";
 ---
 
 <section>
   <div class="title">
-    <h3>Nos Encontras En Vivo Acá</h3>
-    <p>Lunes a Viernes de 21 a 23 hs</p>
+    <h3>Encontras todos nuestros programas Acá</h3>
+    <p> En Vivo Lunes a Viernes de 21 a 23 hs</p>
   </div>
   <div class="buttons">
-    <a href="#" class="youtube">
-      <YoutubeIcon size={40} color="#ff0000" />
+    <a href="https://www.youtube.com/@estoesblender" class="youtube">
+      <YoutubeIcon size={38} color="#ff0000" />
       <span>YouTube</span>
     </a>
-    <a href="#" class="green">
-      <GreenIcon size={48} color="#40c057" />
-      <span>Green</span>
+    <a href="https://open.spotify.com/show/5bK1qKWB6qGR8W4us4jpwO?si=43597ca2c51c4e76" class="green">
+      <SpotifyIcon size={38} color="#40c057" />
+      <span>Spotify</span>
     </a>
   </div>
 </section>
 <style>
   section {
-    padding: 3rem;
+    padding: 1rem 3rem 3rem;
     display: flex;
     flex-direction: column;
     gap: 3rem;
@@ -34,11 +35,11 @@ import YoutubeIcon from "../icons/YoutubeIcon";
     flex-direction: column;
     gap: 0.2rem;
     align-items: center;
-    color: #ffffff;
+    color: var(--primary_text);
   }
 
   h3 {
-    font-size: 2.8rem;
+    font-size: var(--subtitle_size);
     text-align: center;
   }
 
@@ -46,6 +47,7 @@ import YoutubeIcon from "../icons/YoutubeIcon";
     opacity: 0.7;
     font-style: italic;
     text-align: center;
+    font-size: var(--paragraph_size);
   }
 
   .buttons {
@@ -58,12 +60,12 @@ import YoutubeIcon from "../icons/YoutubeIcon";
     align-items: center;
     gap: 0.5rem;
     background-color: transparent;
-    color: #ffffff;
-    font-size: 1.5rem;
+    color: var(--primary_text);
+    font-size: var(--paragraph_size);
     cursor: pointer;
-    border: 1px solid #666666;
+    border: 1px solid var(--border_color);
     padding: 0.5rem 1rem;
-    font-family: "Bebas Neue", sans-serif;
+    font-family: var(--primary_font);
     text-decoration: none;
     position: relative;
     border: 0 solid;
@@ -106,8 +108,16 @@ import YoutubeIcon from "../icons/YoutubeIcon";
 
   @media screen and (max-width: 620px) {
     section {
-      padding: 2rem 2rem 3rem;
+      padding: 1rem 2rem 3rem;
       gap: 2rem;
+    }
+
+    h3 {
+      font-size: var(--subtitle_mobile_size);
+    }
+
+    .title p {
+      font-size: var(--paragraph_mobile_size);
     }
 
     .buttons {

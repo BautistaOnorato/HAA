@@ -19,6 +19,8 @@ interface GuestGridProps {
   openFilters: boolean;
   handleOpenFilters: () => void;
   isLoading: boolean;
+  page: number;
+  handlePage: (value: number) => void;
 }
 
 const ITEMS = 20;
@@ -32,17 +34,15 @@ const GuestGrid = ({
   openFilters,
   handleOpenFilters,
   isLoading,
+  page,
+  handlePage
 }: GuestGridProps) => {
-  const [page, setPage] = useState(0);
-
-  const handlePage = (value: number) => setPage(value);
 
   return (
     <div
       className={styles.guests_container}
-      onClick={() => console.log(page, guests.length)}
     >
-      <div className={styles.guests_top} onClick={() => console.log(guests)}>
+      <div className={styles.guests_top}>
         <div className={styles.filter_icon} onClick={handleOpenFilters}>
           {openFilters ? <FilterOffIcon size={24} /> : <FilterIcon size={24} />}
         </div>

@@ -22,6 +22,9 @@ const GuestContainer = () => {
   });
   const [search, setSearch] = useState("");
   const [order, setOrder] = useState(orderOptionsEnum.NEWEST);
+  const [page, setPage] = useState(0);
+
+  const handlePage = (value: number) => setPage(value);
 
   const handleOpenFilters = () => {
     if (openFilters) {
@@ -49,9 +52,13 @@ const GuestContainer = () => {
     fetchGuests();
   }, [])
 
-  const handleSearchChange = (value: string) => setSearch(value);
+  const handleSearchChange = (value: string) => {
+    setPage(0)
+    setSearch(value)
+  };
 
   const handleRoleChange = (value: string) => {
+    setPage(0)
     if (filters.roles.includes(value)) {
       setFilters({
         ...filters,
@@ -63,6 +70,7 @@ const GuestContainer = () => {
   };
 
   const handleCategoryChange = (value: string) => {
+    setPage(0)
     if (filters.categories.includes(value)) {
       setFilters({
         ...filters,
@@ -74,6 +82,7 @@ const GuestContainer = () => {
   };
 
   const handleResetFilters = () => {
+    setPage(0)
     setFilters({
       roles: [],
       categories: [],
@@ -81,6 +90,7 @@ const GuestContainer = () => {
   }
 
   const handleOrderChange = (value: orderOptionsEnum) => {
+    setPage(0)
     setOrder(value);
   };
 
@@ -135,6 +145,8 @@ const GuestContainer = () => {
         openFilters={openFilters}
         handleOpenFilters={handleOpenFilters}
         isLoading={loading}
+        page={page}
+        handlePage={handlePage}
       />
     </div>
   );

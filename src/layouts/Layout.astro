@@ -36,6 +36,22 @@ const { title } = Astro.props;
     --gradY: 50%;
     --c1: rgba(168, 239, 255, 1);
     --c2: rgba(168, 239, 255, 0.1);
+
+    --subtitle_size: 3.5rem;
+    --subtitle_mobile_size: 2.5rem;
+    --short_title_size: 1.8rem;
+    --paragraph_size: 1.5rem;
+    --paragraph_mobile_size: 1.2rem;
+
+    --primary_text: #ffffff;
+    --primary_bg: #0f0f0f;
+    --secondary_bg: #1e1e1e;
+
+    --border_radius: 8px;
+    --border_color: #565656;
+
+    --primary_font: "Bebas Neue", sans-serif;
+    --secondary_font: "Roboto Flex Variable", sans-serif;
   }
 
   *,
@@ -47,6 +63,6 @@ const { title } = Astro.props;
   }
   html {
     font-family: "Bebas Neue", sans-serif;
-    background: #0f0f0f;
+    background: var(--primary_bg);
   }
 </style>

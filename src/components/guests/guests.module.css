@@ -1,5 +1,5 @@
 .no_scroll {
-  overflow: hidden;
+  overflow: hidden !important;
   max-height: 100vh;
 }
 
@@ -18,13 +18,9 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  /* border-right: 1px solid #ddd; */
   padding-right: 1rem;
   width: 100%;
   height: 100%;
-  /* max-height: 300px;
-  overflow-y: hidden; */
-  /* position: sticky; */
 }
 
 .filters_title {
@@ -32,12 +28,12 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border_color);
   padding-bottom: 0.5rem;
 }
 
 .filters_title p {
-  font-size: 2rem;
+  font-size: var(--short_title_size);
 }
 
 .filters_title .filters_reset {
@@ -60,12 +56,12 @@
   align-items: center;
   gap: 1rem;
   cursor: pointer;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border_color);
   padding-bottom: 0.5rem;
 }
 
 .filter_title p {
-  font-size: 1.5rem;
+  font-size: var(--paragraph_size);
 }
 
 .filter_options {
@@ -74,26 +70,26 @@
   gap: 0.5rem;
   padding-top: 0.5rem;
   overflow-y: auto;
-  max-height: 350px;
+  max-height: 400px;
 }
 
 /* width */
-.filter_options::-webkit-scrollbar {
+.filter_options::-webkit-scrollbar, .filters_container::-webkit-scrollbar {
   width: 6px;
 }
 
 /* Track */
-.filter_options::-webkit-scrollbar-track {
+.filter_options::-webkit-scrollbar-track, .filters_container::-webkit-scrollbar-track {
   background: #666666;
 }
 
 /* Handle */
-.filter_options::-webkit-scrollbar-thumb {
+.filter_options::-webkit-scrollbar-thumb, .filters_container::-webkit-scrollbar-thumb {
   background: #3f3f3f;
 }
 
 /* Handle on hover */
-.filter_options::-webkit-scrollbar-thumb:hover {
+.filter_options::-webkit-scrollbar-thumb:hover, .filters_container::-webkit-scrollbar-thumb:hover {
   background: #333333;
 }
 
@@ -102,7 +98,7 @@
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: var(--paragraph_mobile_size);
 }
 
 .filter_icon {
@@ -129,8 +125,8 @@
 
 .guests {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  grid-template-rows: repeat(2, 1fr);
   gap: 1rem;
 }
 
@@ -154,16 +150,16 @@
   padding: 0.15rem 0.15rem 0;
   aspect-ratio: 1/1;
   cursor: pointer;
-  border: 1px solid #565656;
-  border-radius: 8px;
-  background-color: #1e1e1e;
-  color: #fff;
+  border: 1px solid var(--border_color);
+  border-radius: var(--border_radius);
+  background-color: var(--secondary_bg);
+  color: var(--primary_text);
   font-size: 1rem;
   transition: all 0.2s ease-in-out;
 }
 
 .guests_pagination button:hover {
-  background-color: #565656;
+  background-color: var(--border_color);
 }
 
 .guests_pagination button:disabled {
@@ -172,14 +168,14 @@
 }
 
 .guests_pagination button:disabled:hover {
-  background-color: #1e1e1e;
+  background-color: var(--secondary_bg);
 }
 
 .guests_pagination button.active {
-  background-color: #dddddd;
-  color: #1e1e1e;
+  background-color: #ececec;
+  color: var(--secondary_bg);
   font-weight: 700;
-  border: 1px solid #1e1e1e;
+  border: 1px solid var(--secondary_bg);
 }
 
 .guest_card {
@@ -187,9 +183,9 @@
   aspect-ratio: 1/1;
   background-size: cover;
   background-position: center;
-  border-radius: 8px;
+  border-radius: var(--border_radius);
   position: relative;
-  border: 1px solid #565656;
+  border: 1px solid var(--border_color);
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
@@ -199,7 +195,7 @@
 .guests_skeleton {
   width: 100%;
   aspect-ratio: 1/1;
-  border-radius: 8px;
+  border-radius: var(--border_radius);
   background: linear-gradient(90deg, #505050 25%, #4e4e4e 50%, #464646 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
@@ -207,14 +203,14 @@
 
 .guest_more {
   background-color: #333333d8;
-  border-radius: 0 8px 0 8px;
+  border-radius: 0 var(--border_radius) 0 var(--border_radius);
   padding: 0.2rem;
   aspect-ratio: 1/1;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
-  font-size: 1.5rem;
+  color: var(--primary_text);
+  font-size: var(--paragraph_size);
   cursor: pointer;
   z-index: 2;
 }
@@ -247,20 +243,20 @@
 }
 
 .guest_name {
-  font-size: 1.2rem;
+  font-size: var(--paragraph_mobile_size);
 }
 
 .guest_description {
   font-size: 1rem;
   opacity: 0.7;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid var(--border_color);
   width: 100%;
   text-align: center;
   padding-bottom: 0.5rem;
 }
 
 .guest_appearance_title {
-  font-size: 1.2rem;
+  font-size: var(--paragraph_mobile_size);
   padding: 0.5rem 0 0.5rem;
 }
 
@@ -268,16 +264,14 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
   width: 100%;
-  /* gap: 0.5rem; */
 }
 
 .guest_appearance {
   font-size: 1.2rem;
   cursor: pointer;
-  color: #fff;
+  color: var(--primary_text);
   text-decoration: none;
-  background-color: #1e1e1e;
-  /* border-radius: 8px; */
+  background-color: var(--secondary_bg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -285,8 +279,8 @@
 }
 
 .guest_appearance:hover {
-  background-color: #fff;
-  color: #1e1e1e;
+  background-color: var(--primary_text);
+  color: var(--secondary_bg);
 }
 
 @keyframes slide-up {
@@ -353,13 +347,16 @@
     height: 100%;
     max-height: 100vh;
     overflow-y: scroll;
-    background-color: #1e1e1e;
-    border-right: 1px solid #333333;
+    background-color: var(--secondary_bg);
     position: absolute;
     top: 0;
     left: -40%;
     z-index: 101;
     animation: slide-left 0.2s ease-in-out forwards;
+  }
+
+  .filter_options {
+    max-height: 300px;
   }
 
   .filter_icon {
@@ -368,25 +365,25 @@
     height: 100%;
     max-height: 50px;
     border-radius: 50px;
-    background-color: #333333;
+    background-color: var(--secondary_bg);
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    border: 1px solid #565656;
+    border: 1px solid var(--border_color);
   }
 
 }
 
 @media screen and (max-width: 870px) {
  .guests {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
  }
 }
 
 @media screen and (max-width: 670px) {
   .guests {
-   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+   grid-template-columns: repeat(2, minmax(180px, 1fr));
   }
 
   .guests_top {

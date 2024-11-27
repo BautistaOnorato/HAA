@@ -3,12 +3,14 @@ interface Props {
   image: string
   align?: 'flex-start' | 'flex-end' | 'center'
   imagePosition?: 'top' | 'bottom' | 'center'
+  image_mobile?: string
 }
 
-const { image, align, imagePosition } = Astro.props
+const { image, align, imagePosition, image_mobile } = Astro.props
 ---
 <section style={`align-items: ${align || 'flex-start'}`}>
-  <img src={image} alt="" style={`object-position: ${imagePosition || 'center'}`}>
+  <img src={image_mobile} alt="" style={`object-position: ${imagePosition || 'center'}`} class={image_mobile ? 'mobile' : ''}>
+  <img src={image} alt="" style={`object-position: ${imagePosition || 'center'}`} class={image_mobile ? 'desktop' : ''}>
   <slot />
 </section>
 <style>
@@ -28,9 +30,21 @@ const { image, align, imagePosition } = Astro.props
     filter: brightness(40%);
   }
 
+  .mobile {
+    display: none;
+  }
+
   @media screen and (max-width: 800px) {
     img {
       object-position: center center;
+    }
+
+    .desktop {
+      display: none;
+    }
+
+    .mobile {
+      display: block;
     }
   }
 </style>

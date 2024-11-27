@@ -38,7 +38,7 @@ const EpisodesContainer = ({ episodes }: { episodes: Episode[] }) => {
     <div className={styles.episodes_container}>
       <div className={styles.episodes_top}>
         <EpisodesFilter handleFilter={handleFilter} filter={filter} />
-        <p onClick={() => console.log(filteredEpisodes.length, episodes.length, filter)}>{filteredEpisodes.length} de {episodes.length} Programas</p>
+        <p>{filteredEpisodes.length} de {episodes.length} Programas</p>
       </div>
       {
         filteredEpisodes.length === episodes.length || filteredEpisodes.length === 0 ? (
