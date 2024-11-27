@@ -16,13 +16,19 @@ import GuestContainer from "./GuestContainer"
   }
 
   h2 {
-    font-size: 4rem;
+    font-size: var(--subtitle_size);
     text-align: center;
   }
 
   @media screen and (max-width: 870px) {
     section {
       padding: 1.5rem;
+    }
+  }
+
+  @media screen and (max-width: 620px) {
+    h2 {
+      font-size: var(--subtitle_mobile_size);
     }
   }
 </style>

@@ -65,7 +65,13 @@ try {
     }
 
     h2 {
-      font-size: 3rem;
+      font-size: var(--subtitle_size);
+    }
+  }
+
+  @media screen and (max-width: 620px) {
+    h2 {
+      font-size: var(--subtitle_mobile_size);
     }
   }
   

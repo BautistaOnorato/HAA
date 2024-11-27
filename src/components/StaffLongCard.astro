@@ -66,7 +66,6 @@ const { name, role, description, image, instagram, twitter, reverse } =
   }
 
   .image img {
-    /* min-height: calc(100% + 1rem); */
     height: calc(100% + 1rem);
     width: 100%;
     object-fit: cover;
@@ -128,6 +127,14 @@ const { name, role, description, image, instagram, twitter, reverse } =
     .card {
       max-height: 400px;
     }
+
+    .image {
+      width: 30%;
+    }
+
+    .content {
+      width: 70%;
+    }
   }
 
   @media screen and (max-width: 1100px) {
@@ -136,10 +143,7 @@ const { name, role, description, image, instagram, twitter, reverse } =
     }
 
     .image {
-      width: 27%;
-      /* height: calc(100% + 1px); */
-      /* align-self: flex-end; */
-      
+      width: 27%;      
     }
 
     .image img {

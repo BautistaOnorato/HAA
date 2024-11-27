@@ -134,7 +134,7 @@ const GuestContainer = () => {
   return (
     <div className={styles.grid_container}>
       {error ? (
-        <img src="/public/error.png" alt="error" className={styles.error_image} />
+        <img src="error.png" alt="error" className={styles.error_image} />
       ) : (
         <>
           <Filters

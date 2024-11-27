@@ -60,10 +60,11 @@ import MenuIcon from "../icons/MenuIcon.astro";
     display: none;
     /* position: relative; */
     height: 100%;
-    width: 150px;
+    width: 100px;
   }
-
+  
   .menu_toggle {
+    padding: 0 1rem 0 0;
     width: 100%;
     text-align: right;
     height: 100%;
@@ -72,7 +73,6 @@ import MenuIcon from "../icons/MenuIcon.astro";
     justify-content: flex-end;
     cursor: pointer;
     height: 80px;
-    padding: 0 3rem 0 0;
     background-color: #000000;
     z-index: 100;
     position: relative;
@@ -86,10 +86,10 @@ import MenuIcon from "../icons/MenuIcon.astro";
   ul {
     list-style: none;
     position: absolute;
-    top: -50%;
+    top: -30%;
     left: 0;
     width: 100%;
-    background-color: #1e1e1e;
+    background-color: #131313;
     z-index: 1;
     transition: all 0.7s ease-in-out;
   }
@@ -134,17 +134,5 @@ import MenuIcon from "../icons/MenuIcon.astro";
     .menu_container {
       display: block;
     }
-  }
-
-  @media screen and (max-width: 580px) {
-    .menu_container {
-      width: auto;
-    }
-
-    .menu_toggle {
-      padding: 0 1rem 0 0;
-    }
-
-
   }
 </style>
