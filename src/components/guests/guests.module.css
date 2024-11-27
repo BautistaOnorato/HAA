@@ -10,6 +10,11 @@
   height: 100%;
 }
 
+.error_image {
+  width: 400px;
+  margin: 0 auto;
+}
+
 .filters_mobile_wrapper {
   width: 20%;
 }

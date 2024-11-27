@@ -1,18 +1,8 @@
 ---
 import SectionWrapper from "../components/SectionWrapper.astro";
+import TypedText from "../components/TypedText";
 import Layout from "../layouts/Layout.astro";
 ---
-<script>
-  import Typed from 'typed.js';
-  const typed = new Typed(".awardbord", {
-    strings: [
-      "Awardbord.", "Awawe.", "Bwargh."
-    ],
-    typeSpeed: 100,
-    backSpeed: 100,
-    loop: true
-  })
-</script>
 <Layout title="Hay Algo Ahí - Secciones">
   <main>
     <SectionWrapper image="/sections/edibordial.png" image_mobile="/sections/edibordial_mobile.png">
@@ -79,7 +69,7 @@ import Layout from "../layouts/Layout.astro";
         <p>
           En los viernes de Hay Algo Ahí los oyentes del programa vienen a
           demostrar que son dignos del máxmio galardon alcanzable hoy por hoy en
-          la Argentinta, el <strong class="awardbord">Awardbord.</strong>
+          la Argentinta, el <strong class="awardbord"><TypedText client:load words={["Awardbord.", "Warwor.", "Awawe.", "Bwargh."]} /></strong>
         </p>
         <p>
           Hay tres clases de programas de competencias: <strong>¿Hay algo ahí?</strong> donde los

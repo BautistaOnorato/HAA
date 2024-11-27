@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { TagEnum, type Episode } from '../../types/episode'
 import AllEpisodes from './AllEpisodes'
 import styles from './episodes.module.css'
@@ -13,12 +13,6 @@ const EpisodesContainer = ({ episodes }: { episodes: Episode[] }) => {
       return filter as TagEnum
     } else return ''
   })
-
-  // useEffect(() => {
-  //   const urlParams = new URLSearchParams(window.location.search)
-  //   const filter = urlParams.get("filter")
-  //   if (filter) setFilter(filter as TagEnum)
-  // }, [])
 
   const handleFilter = (value: '' | TagEnum) => {
     setFilter(value)

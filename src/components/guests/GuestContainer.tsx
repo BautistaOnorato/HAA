@@ -1,9 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Filters from "./Filters";
 import GuestGrid from "./GuestGrid";
-import {
-  orderOptionsEnum
-} from "../../constants/select-options";
+import { orderOptionsEnum } from "../../constants/select-options";
 import { getGuests } from "../../services/guests";
 import type { CategoryEnum, Guest, RoleEnum } from "../../types/guest";
 import styles from "./guests.module.css";
@@ -32,10 +30,10 @@ const GuestContainer = () => {
     } else {
       document.body.classList.add(styles.no_scroll);
     }
-    setOpenFilters(!openFilters)
+    setOpenFilters(!openFilters);
   };
 
-  useEffect(() => {    
+  useEffect(() => {
     const fetchGuests = async () => {
       setError(false);
       setLoading(true);
@@ -47,18 +45,18 @@ const GuestContainer = () => {
       } finally {
         setLoading(false);
       }
-    }  
+    };
 
     fetchGuests();
-  }, [])
+  }, []);
 
   const handleSearchChange = (value: string) => {
-    setPage(0)
-    setSearch(value)
+    setPage(0);
+    setSearch(value);
   };
 
   const handleRoleChange = (value: string) => {
-    setPage(0)
+    setPage(0);
     if (filters.roles.includes(value)) {
       setFilters({
         ...filters,
@@ -70,7 +68,7 @@ const GuestContainer = () => {
   };
 
   const handleCategoryChange = (value: string) => {
-    setPage(0)
+    setPage(0);
     if (filters.categories.includes(value)) {
       setFilters({
         ...filters,
@@ -82,15 +80,15 @@ const GuestContainer = () => {
   };
 
   const handleResetFilters = () => {
-    setPage(0)
+    setPage(0);
     setFilters({
       roles: [],
       categories: [],
     });
-  }
+  };
 
   const handleOrderChange = (value: orderOptionsEnum) => {
-    setPage(0)
+    setPage(0);
     setOrder(value);
   };
 
@@ -99,8 +97,14 @@ const GuestContainer = () => {
       return guests;
     }
     return guests.filter((guest) => {
-      const hasRole = filters.roles.length === 0 || filters.roles.some((role) => guest.roles.includes(role as RoleEnum));
-      const hasCategory = filters.categories.length === 0 || filters.categories.find((category) => guest.categories.includes(category as CategoryEnum));
+      const hasRole =
+        filters.roles.length === 0 ||
+        filters.roles.some((role) => guest.roles.includes(role as RoleEnum));
+      const hasCategory =
+        filters.categories.length === 0 ||
+        filters.categories.find((category) =>
+          guest.categories.includes(category as CategoryEnum)
+        );
 
       return hasRole && hasCategory;
     });
@@ -119,35 +123,43 @@ const GuestContainer = () => {
       default:
         return filteredGuests;
     }
-  }, [order, filteredGuests])
+  }, [order, filteredGuests]);
 
   const searchedGuests = useMemo(() => {
-    return orderedGuests.filter((guest) => guest.name.toLowerCase().startsWith(search.toLowerCase()));
+    return orderedGuests.filter((guest) =>
+      guest.name.toLowerCase().startsWith(search.toLowerCase())
+    );
   }, [orderedGuests, search]);
 
   return (
     <div className={styles.grid_container}>
-      <Filters
-        categories={filters.categories}
-        roles={filters.roles}
-        onCategoryChange={handleCategoryChange}
-        onRoleChange={handleRoleChange}
-        onReset={handleResetFilters}
-        openFilters={openFilters}
-        handleOpenFilters={handleOpenFilters}
-      />
-      <GuestGrid
-        guests={searchedGuests}
-        searchValue={search}
-        orderValue={order}
-        handleOrderChange={handleOrderChange}
-        handleSearchChange={handleSearchChange}
-        openFilters={openFilters}
-        handleOpenFilters={handleOpenFilters}
-        isLoading={loading}
-        page={page}
-        handlePage={handlePage}
-      />
+      {error ? (
+        <img src="/public/error.png" alt="error" className={styles.error_image} />
+      ) : (
+        <>
+          <Filters
+            categories={filters.categories}
+            roles={filters.roles}
+            onCategoryChange={handleCategoryChange}
+            onRoleChange={handleRoleChange}
+            onReset={handleResetFilters}
+            openFilters={openFilters}
+            handleOpenFilters={handleOpenFilters}
+          />
+          <GuestGrid
+            guests={searchedGuests}
+            searchValue={search}
+            orderValue={order}
+            handleOrderChange={handleOrderChange}
+            handleSearchChange={handleSearchChange}
+            openFilters={openFilters}
+            handleOpenFilters={handleOpenFilters}
+            isLoading={loading}
+            page={page}
+            handlePage={handlePage}
+          />
+        </>
+      )}
     </div>
   );
 };
