@@ -10,6 +10,7 @@ import MenuIcon from "../icons/MenuIcon.astro";
   const menu = document.querySelector(".menu");
 
   const closeMenu = () => {
+    console.log("close fn");
     menu?.classList.remove("active");
     crossIcon?.classList.add("hidden");
     menuIcon?.classList.remove("hidden");
@@ -23,10 +24,17 @@ import MenuIcon from "../icons/MenuIcon.astro";
     document.body.style.overflow = "hidden";
   }
   
-  document.body.addEventListener("click", closeMenu);
+  document.body.addEventListener("click", (e) => {
+    e.stopPropagation()
+    console.log("close");
+    
+    closeMenu()
+  });
 
   menuIcon?.addEventListener("click", (e) => {
     e.stopPropagation()
+    console.log("open");
+    
     openMenu();
   });
   
