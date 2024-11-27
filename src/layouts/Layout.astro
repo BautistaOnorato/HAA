@@ -24,7 +24,7 @@ const { title } = Astro.props;
   </head>
   <body>
     <Header />
-    <slot />
+    <slot id="content" />
     <Footer />
   </body>
 </html>
@@ -61,8 +61,13 @@ const { title } = Astro.props;
     margin: 0;
     padding: 0;
   }
+
   html {
-    font-family: "Bebas Neue", sans-serif;
+    font-family: var(--primary_font);
     background: var(--primary_bg);
+  }
+
+  body:has(main.no_scroll) {
+    overflow: hidden;
   }
 </style>

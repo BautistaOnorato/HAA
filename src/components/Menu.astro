@@ -8,24 +8,26 @@ import MenuIcon from "../icons/MenuIcon.astro";
   const menuIcon = document.querySelector(".menu_icon");
   const crossIcon = document.querySelector(".cross_icon");
   const menu = document.querySelector(".menu");
+  const content = document.querySelector("main");
 
   const closeMenu = () => {
     console.log("close fn");
     menu?.classList.remove("active");
     crossIcon?.classList.add("hidden");
     menuIcon?.classList.remove("hidden");
-    document.body.style.overflow = "auto";
+    content?.classList.remove("no_scroll");
+    console.log(content);
+    
   }
-
+  
   const openMenu = () => {
     menu?.classList.add("active");
     crossIcon?.classList.remove("hidden");
     menuIcon?.classList.add("hidden");
-    document.body.style.overflow = "hidden";
+    content?.classList.add("no_scroll");
   }
   
   document.body.addEventListener("click", (e) => {
-    e.stopPropagation()
     console.log("close");
     
     closeMenu()
@@ -38,7 +40,10 @@ import MenuIcon from "../icons/MenuIcon.astro";
     openMenu();
   });
   
-  crossIcon?.addEventListener("click", closeMenu);
+  crossIcon?.addEventListener("click", (e) => {
+    e.stopPropagation()
+    closeMenu()
+  });
 
   menu?.addEventListener("click", (e) => e.stopPropagation());
 </script>
@@ -107,17 +112,18 @@ import MenuIcon from "../icons/MenuIcon.astro";
   }
 
   li {
-    padding: 1rem;
-    font-size: 1.5rem;
     width: 100%;
+    font-size: 1.5rem;
     text-align: center;
     cursor: pointer;
     border-bottom: 1px solid #333333;
     transition: all 0.3s ease-in-out;
+    display: flex;
   }
 
   li a {
     width: 100%;
+    padding: 1rem;
   }
 
   li:last-child {
