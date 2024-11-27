@@ -4,13 +4,6 @@ import SpotifyIcon from "../icons/SpotifyIcon";
 import TwitterIcon from "../icons/TwitterIcon.astro";
 import YoutubeIcon from "../icons/YoutubeIcon";
 ---
-
-<script>
-  const footer = document.querySelector("footer");
-  if (footer && window.location.pathname === "/secciones") {
-    footer.style.borderTop = "none";
-  }
-</script>
 <footer>
   <a href="https://www.instagram.com/estoesblender/" class="blender">
     <img src="blender.png" alt="" />
@@ -32,7 +25,6 @@ import YoutubeIcon from "../icons/YoutubeIcon";
     width: 85%;
     margin: 0 auto;
     color: var(--primary_text);
-    border-top: 1px solid var(--border_color);
   }
 
   .blender {

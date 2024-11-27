@@ -4,7 +4,7 @@ import TypedText from "../components/TypedText";
 import Layout from "../layouts/Layout.astro";
 ---
 <Layout title="Hay Algo Ahí - Secciones">
-  <main>
+  <main class="secciones">
     <SectionWrapper image="/sections/edibordial.png" image_mobile="/sections/edibordial_mobile.png">
       <div class="container">
         <h3>Edibordial</h3>
@@ -84,6 +84,10 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style>
+  .secciones::after {
+    border: none;
+  }
+
   .container {
     display: flex;
     flex-direction: column;

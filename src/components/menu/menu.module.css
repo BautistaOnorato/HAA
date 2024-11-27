@@ -17,11 +17,14 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  cursor: pointer;
   height: 80px;
   background-color: #000000;
   z-index: 100;
   position: relative;
+}
+
+.menu_toggle svg {
+  cursor: pointer;
 }
 
 

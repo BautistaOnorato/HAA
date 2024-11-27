@@ -66,4 +66,12 @@ const { title } = Astro.props;
     font-family: var(--primary_font);
     background: var(--primary_bg);
   }
+
+  main::after {
+    content: "";
+    display: block;
+    width: 85%;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border_color);
+  }
 </style>

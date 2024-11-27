@@ -1,14 +1,14 @@
 ---
 import { getYoutubeLiveInfo } from "../services/youtube";
 import { ROUTES } from "../constants/routes";
-import Menu from "./Menu.astro"
+import Menu from "./menu/Menu"
 const channelId = "UC6pJGaMdx5Ter_8zYbLoRgA";
 
 const data = await getYoutubeLiveInfo(channelId);
 ---
 
 <header>
-  <Menu />
+  <Menu client:load />
   <div class="header_container">
     <div class="logo_container">
       <a href="/" class="logo"><img src="logo.png" alt="Hay Algo Ahí Logo" /></a
