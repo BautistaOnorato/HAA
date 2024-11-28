@@ -69,7 +69,7 @@ import Layout from "../layouts/Layout.astro";
         <p>
           En los viernes de Hay Algo Ahí los oyentes del programa vienen a
           demostrar que son dignos del máxmio galardon alcanzable hoy por hoy en
-          la Argentinta, el <strong class="awardbord"><TypedText client:load words={["Awardbord.", "Warwor.", "Awawe.", "Bwargh."]} /></strong>
+          la República Argentina, <br>el <strong class="awardbord"><TypedText client:load words={["Awardbord.", "Warwor.", "Awawe.", "Bwargh."]} /></strong>
         </p>
         <p>
           Hay tres clases de programas de competencias: <strong>¿Hay algo ahí?</strong> donde los
@@ -132,10 +132,18 @@ import Layout from "../layouts/Layout.astro";
   @media screen and (max-width: 600px) {
     .container {
       padding: 1.5rem;
+      text-align: center;
+    }
+    
+    h3 {
+      text-align: center;
+      width: 100%;
+      font-size: 2.5rem;
     }
 
-    h3 {
-      font-size: 2.5rem;
+    .schedule {
+      text-align: center;
+      width: 100%;
     }
   }
 </style>

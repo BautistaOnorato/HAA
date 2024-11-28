@@ -13,11 +13,11 @@ const EpisodeCard = ({ episode }: EpisodeCardProps) => {
     <div className={styles.episode_card}>
       <div className={styles.episode_card_links}>
         <a href={episode.youtube} className={`${styles.episode_card_link} ${styles.episode_card_link_youtube}`}>
-          <YoutubeIcon size={24} />
+          <span>YouTube</span> <YoutubeIcon size={32} />
         </a>
         {episode.spotify && (
           <a href={episode.spotify} className={`${styles.episode_card_link} ${styles.episode_card_link_spotify}`}>
-            <SpotifyIcon size={24} />
+            <span>Spotify</span> <SpotifyIcon size={32} />
           </a>
         )}
       </div>
