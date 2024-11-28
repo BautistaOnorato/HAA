@@ -17,7 +17,7 @@ export const useClickOutside = () => {
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  });
+  }, []);
 
   const handleMenu = (value: boolean) => setShowMenu(value);
 

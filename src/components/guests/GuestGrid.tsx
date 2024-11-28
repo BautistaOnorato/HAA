@@ -42,9 +42,6 @@ const GuestGrid = ({
       className={styles.guests_container}
     >
       <div className={styles.guests_top}>
-        <div className={styles.filter_icon} onClick={handleOpenFilters}>
-          {openFilters ? <FilterOffIcon size={24} /> : <FilterIcon size={24} />}
-        </div>
         <Input
           name="search"
           placeholder="Buscar..."

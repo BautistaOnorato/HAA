@@ -1,10 +1,24 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Filters from "./Filters";
 import GuestGrid from "./GuestGrid";
 import { orderOptionsEnum } from "../../constants/select-options";
 import { getGuests } from "../../services/guests";
 import type { CategoryEnum, Guest, RoleEnum } from "../../types/guest";
 import styles from "./guests.module.css";
+import { useObserver } from "../../hooks/useObserver";
+
+const setObserverThreshold = () => {
+  const width = window.innerWidth;
+  if (width > 870) {
+    return 0.35
+  } else if (width < 871 && width > 670) {
+    return 0.2
+  } else if (width < 671 && width > 471) { 
+    return 0.13
+  } else {
+    return 0.05
+  }
+}
 
 const GuestContainer = () => {
   const [openFilters, setOpenFilters] = useState(false);
@@ -21,6 +35,7 @@ const GuestContainer = () => {
   const [search, setSearch] = useState("");
   const [order, setOrder] = useState(orderOptionsEnum.NEWEST);
   const [page, setPage] = useState(0);
+  const { elRef: gridRef, isVisible } = useObserver({ threshold: setObserverThreshold() });
 
   const handlePage = (value: number) => setPage(value);
 
@@ -49,6 +64,22 @@ const GuestContainer = () => {
 
     fetchGuests();
   }, []);
+
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     if (window.innerWidth > 871 && observerOptions.threshold !== 0.3) {
+  //       setObserverOptions({...observerOptions, threshold: 0.3})
+  //     } else if (window.innerWidth < 871 && observerOptions.threshold !== 0.2) {
+  //       setObserverOptions({...observerOptions, threshold: 0.2})
+  //     }
+  //   }
+
+  //   window.addEventListener('resize', handleResize)
+
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize)
+  //   }
+  // }, [])
 
   const handleSearchChange = (value: string) => {
     setPage(0);
@@ -132,7 +163,7 @@ const GuestContainer = () => {
   }, [orderedGuests, search]);
 
   return (
-    <div className={styles.grid_container}>
+    <div className={styles.grid_container} ref={gridRef}>
       {error ? (
         <img src="error.png" alt="error" className={styles.error_image} />
       ) : (
@@ -145,6 +176,7 @@ const GuestContainer = () => {
             onReset={handleResetFilters}
             openFilters={openFilters}
             handleOpenFilters={handleOpenFilters}
+            isVisible={isVisible} 
           />
           <GuestGrid
             guests={searchedGuests}

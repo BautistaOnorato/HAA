@@ -3,7 +3,7 @@ import GuestContainer from "./GuestContainer"
 ---
 <section>
   <h2>¿Quienes pasaron por los arcos de Hay Algo Ahí?</h2>
-  <GuestContainer client:load />
+  <GuestContainer client:only />
 </section>
 <style>
   section {
@@ -23,6 +23,7 @@ import GuestContainer from "./GuestContainer"
   @media screen and (max-width: 870px) {
     section {
       padding: 1.5rem;
+      gap: 1rem;
     }
   }
 
