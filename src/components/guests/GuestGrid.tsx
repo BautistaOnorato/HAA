@@ -4,9 +4,6 @@ import Select from "../common/Select";
 import { orderOptions, orderOptionsEnum } from "../../constants/select-options";
 import GuestCard from "./GuestCard";
 import type { Guest } from "../../types/guest";
-
-import FilterIcon from "../../icons/FilterIcon";
-import FilterOffIcon from "../../icons/FilterOffIcon";
 import GuestsPagination from "./GuestsPagination";
 
 interface GuestGridProps {
@@ -16,7 +13,6 @@ interface GuestGridProps {
   handleOrderChange: (value: orderOptionsEnum) => void;
   handleSearchChange: (value: string) => void;
   openFilters: boolean;
-  handleOpenFilters: () => void;
   isLoading: boolean;
   page: number;
   handlePage: (value: number) => void;
@@ -31,7 +27,6 @@ const GuestGrid = ({
   handleOrderChange,
   handleSearchChange,
   openFilters,
-  handleOpenFilters,
   isLoading,
   page,
   handlePage

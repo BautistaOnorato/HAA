@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Filters from "./Filters";
 import GuestGrid from "./GuestGrid";
 import { orderOptionsEnum } from "../../constants/select-options";
@@ -11,7 +11,7 @@ import { useClickOutside } from "../../hooks/useClickOutside";
 const setObserverThreshold = () => {
   const width = window.innerWidth;
   if (width > 870) {
-    return 0.35
+    return 0.1
   } else if (width < 871 && width > 670) {
     return 0.2
   } else if (width < 671 && width > 471) { 
@@ -23,7 +23,6 @@ const setObserverThreshold = () => {
 
 const GuestContainer = () => {
   const { showMenu, handleMenu, menuRef} = useClickOutside();
-  // const [openFilters, setOpenFilters] = useState(false);
   const [guests, setGuests] = useState<Guest[]>([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -43,11 +42,21 @@ const GuestContainer = () => {
 
   const handleOpenFilters = () => {
     const header = document.querySelector("header");
+
+    if (!header) return
+
     if (!showMenu) {
       document.body.style.overflow = "hidden";
-      header?.classList.remove("scrolled");
+      header.classList.remove("scrolled");
+      if (window.scrollY < 80) {
+        header.style.transform = "translateY(-80px)";
+      }
+      
     } else {
       document.body.style.overflow = "auto";
+      if (window.scrollY < 80) {
+        header.style.transform = "translateY(0)";
+      }
     }
     handleMenu(!showMenu);
   };
@@ -174,7 +183,6 @@ const GuestContainer = () => {
             handleOrderChange={handleOrderChange}
             handleSearchChange={handleSearchChange}
             openFilters={showMenu}
-            handleOpenFilters={handleOpenFilters}
             isLoading={loading}
             page={page}
             handlePage={handlePage}

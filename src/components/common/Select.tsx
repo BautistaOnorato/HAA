@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import styles from "./common.module.css";
 import ChevronDownIcon from "../../icons/ChevronDownIcon";
 import ChevronUpIcon from "../../icons/ChevronUpIcon";
