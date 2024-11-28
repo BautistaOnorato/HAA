@@ -9,9 +9,9 @@ const Menu = () => {
 
   const openCloseMenu = (value: boolean) => {
     if (value) {
-      document.body.classList.add(styles.no_scroll);
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.classList.remove(styles.no_scroll);
+      document.body.style.overflow = "auto";
     }
     handleMenu(value);
   }

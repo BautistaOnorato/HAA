@@ -9,6 +9,7 @@ export const useClickOutside = () => {
       if (!menuRef.current) return
 
       if (!menuRef.current.contains(e.target)) {
+        document.body.style.overflow = "auto";
         setShowMenu(false);
       }
     };
@@ -19,7 +20,9 @@ export const useClickOutside = () => {
     };
   }, []);
 
-  const handleMenu = (value: boolean) => setShowMenu(value);
+  const handleMenu = (value: boolean) => {
+    setShowMenu(value);
+  };
 
   return {
     menuRef,

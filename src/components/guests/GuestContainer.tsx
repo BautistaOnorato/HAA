@@ -42,10 +42,12 @@ const GuestContainer = () => {
   const handlePage = (value: number) => setPage(value);
 
   const handleOpenFilters = () => {
-    if (showMenu) {
-      document.body.classList.remove(styles.no_scroll);
+    const header = document.querySelector("header");
+    if (!showMenu) {
+      document.body.style.overflow = "hidden";
+      header?.classList.remove("scrolled");
     } else {
-      document.body.classList.add(styles.no_scroll);
+      document.body.style.overflow = "auto";
     }
     handleMenu(!showMenu);
   };
@@ -66,22 +68,6 @@ const GuestContainer = () => {
 
     fetchGuests();
   }, []);
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     if (window.innerWidth > 871 && observerOptions.threshold !== 0.3) {
-  //       setObserverOptions({...observerOptions, threshold: 0.3})
-  //     } else if (window.innerWidth < 871 && observerOptions.threshold !== 0.2) {
-  //       setObserverOptions({...observerOptions, threshold: 0.2})
-  //     }
-  //   }
-
-  //   window.addEventListener('resize', handleResize)
-
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize)
-  //   }
-  // }, [])
 
   const handleSearchChange = (value: string) => {
     setPage(0);
