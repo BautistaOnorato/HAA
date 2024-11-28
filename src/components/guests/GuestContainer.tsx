@@ -6,6 +6,7 @@ import { getGuests } from "../../services/guests";
 import type { CategoryEnum, Guest, RoleEnum } from "../../types/guest";
 import styles from "./guests.module.css";
 import { useObserver } from "../../hooks/useObserver";
+import { useClickOutside } from "../../hooks/useClickOutside";
 
 const setObserverThreshold = () => {
   const width = window.innerWidth;
@@ -21,7 +22,8 @@ const setObserverThreshold = () => {
 }
 
 const GuestContainer = () => {
-  const [openFilters, setOpenFilters] = useState(false);
+  const { showMenu, handleMenu, menuRef} = useClickOutside();
+  // const [openFilters, setOpenFilters] = useState(false);
   const [guests, setGuests] = useState<Guest[]>([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -40,12 +42,12 @@ const GuestContainer = () => {
   const handlePage = (value: number) => setPage(value);
 
   const handleOpenFilters = () => {
-    if (openFilters) {
+    if (showMenu) {
       document.body.classList.remove(styles.no_scroll);
     } else {
       document.body.classList.add(styles.no_scroll);
     }
-    setOpenFilters(!openFilters);
+    handleMenu(!showMenu);
   };
 
   useEffect(() => {
@@ -174,9 +176,10 @@ const GuestContainer = () => {
             onCategoryChange={handleCategoryChange}
             onRoleChange={handleRoleChange}
             onReset={handleResetFilters}
-            openFilters={openFilters}
+            openFilters={showMenu}
             handleOpenFilters={handleOpenFilters}
             isVisible={isVisible} 
+            menuRef={menuRef as React.RefObject<HTMLDivElement>}
           />
           <GuestGrid
             guests={searchedGuests}
@@ -184,7 +187,7 @@ const GuestContainer = () => {
             orderValue={order}
             handleOrderChange={handleOrderChange}
             handleSearchChange={handleSearchChange}
-            openFilters={openFilters}
+            openFilters={showMenu}
             handleOpenFilters={handleOpenFilters}
             isLoading={loading}
             page={page}

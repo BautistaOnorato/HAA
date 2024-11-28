@@ -51,6 +51,7 @@
   align-items: center;
   cursor: pointer;
   left: calc(100% + 1rem);
+  top: 70px;
 }
 
 .filters {

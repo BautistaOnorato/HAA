@@ -4,9 +4,7 @@ export const useObserver = (options?: IntersectionObserverInit) => {
   const [isVisible, setIsVisible] = useState(false);
   const elRef = useRef(null);
 
-  useEffect(() => {
-    console.log(options);
-    
+  useEffect(() => {    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

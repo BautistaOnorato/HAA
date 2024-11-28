@@ -13,6 +13,7 @@ interface FilterProps {
   openFilters: boolean;
   handleOpenFilters: () => void;
   isVisible: boolean;
+  menuRef: React.RefObject<HTMLDivElement> | null;
 }
 
 const Filters = ({
@@ -24,9 +25,10 @@ const Filters = ({
   openFilters,
   handleOpenFilters,
   isVisible,
+  menuRef
 }: FilterProps) => {
   return (
-    <div className={`${styles.filters_container} ${openFilters ? styles.open : styles.closed} ${isVisible ? styles.active : styles.inactive}`}>
+    <div className={`${styles.filters_container} ${openFilters ? styles.open : styles.closed} ${isVisible ? styles.active : styles.inactive}`} ref={menuRef}>
       <div className={styles.filters_title}>
         <div
           className={`${styles.filter_icon}`}
